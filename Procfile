@@ -1,1 +1,1 @@
-web: --app book_bot.php
+web: vendor/bin/heroku-php-apache2 web/
