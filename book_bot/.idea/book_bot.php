@@ -1,7 +1,7 @@
 <?php
   include('vendor/autoload.php'); //Подключаем библиотеку
   use Telegram\Bot\Api;
-  $telegram = new Api('375466075:AAEARK0r2nXjB67JiB35JCXXhKEyT42Px8s');
+  $telegram = new Api('1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo');
   $result = $telegram -> getWebhookUpdates();
   $text = $result["message"]["text"];
   $chat_id = $result["message"]["chat"]["id"];
@@ -35,3 +35,6 @@
       $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => "Отправьте текстовое сообщение." ]);
   }
 ?>
+
+
+https://api.telegram.org/bot1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo/setWebhook?url=https://track-book-chapters-bot.herokuapp.com//book_bot.php

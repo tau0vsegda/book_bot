@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bcf777f-55bb-4122-bbf8-e4b1c0fa8232" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/book_bot/.idea/book_bot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_bot/.idea/book_bot.php" beforeDir="false" afterPath="$PROJECT_DIR$/book_bot/.idea/book_bot.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1594721711414</updated>
       <workItem from="1594721717074" duration="1305000" />
-      <workItem from="1594797926697" duration="2003000" />
+      <workItem from="1594797926697" duration="4404000" />
     </task>
     <servers />
   </component>
