@@ -1,1 +1,1 @@
-web: -a --app APP book_bot.php
+web: -a --app book_bot.php: app
