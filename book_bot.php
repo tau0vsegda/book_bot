@@ -15,9 +15,3 @@
           $telegram->sendMessage([ 'chat_id' => $chat_id, 'text' => $reply, 'reply_markup' => $reply_markup ]);
       }
 ?>
-
-
-//https://api.telegram.org/bot1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo/setWebhook?url=https://track-book-chapters-bot.herokuapp.com///book_bot.php
-
-//openssl req -newkey rsa:2048 -sha256 -nodes -keyout https://track-book-chapters-bot.herokuapp.com/ -x509 -days 365 -out YOURPUBLIC.pem -subj "/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=YOURDOMAIN.EXAMPLE"
-
