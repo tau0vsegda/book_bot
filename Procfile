@@ -1,1 +1,1 @@
-bot: book_bot.php
+bot: index.php
