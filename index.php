@@ -1,4 +1,4 @@
-
+<?php
 //  include('vendor/autoload.php');
 //  use Telegram\Bot\Api;
 //  echo "hello";
@@ -16,7 +16,7 @@
 //           
 //        }
 //    }
-
+?>
 
 <?php
  function sendMessage($chat_id, $message) 
