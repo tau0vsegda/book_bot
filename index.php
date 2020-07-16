@@ -1,5 +1,5 @@
-<?php
-  include('vendor/autoload.php');
+
+//  include('vendor/autoload.php');
 //  use Telegram\Bot\Api;
 //  echo "hello";
 //  $telegram = new Api('1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo');
@@ -16,7 +16,7 @@
 //           
 //        }
 //    }
-//?>
+
 
 <?php
  function sendMessage($chat_id, $message) 
@@ -24,7 +24,7 @@
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
  }
  
- $access_token = 'YOUR TOKEN';
+ $access_token = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
  $api = 'https://api.telegram.org/bot' . $access_token;
  
  
