@@ -13,6 +13,6 @@
  $first_name = $output['message']['chat']['first_name'];
  $message = $output['message']['text'];
  
- $preload_text = $first_name . ', я получила ваше сообщение!';
+ $preload_text = $first_name . ', я получил ваше сообщение!';
  sendMessage($chat_id, $preload_text);
 ?>
