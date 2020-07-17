@@ -18,18 +18,18 @@
  //тестовая строка
 
 
-$client = new http\Client;
-$request = new http\Client\Request;
+//$client = new http\Client;
+//$request = new http\Client\Request;
 
-$request->setRequestUrl('https://animenewsnetwork.p.rapidapi.com/api.xml');
-$request->setRequestMethod('GET');
-$request->setHeaders(array(
-    'x-rapidapi-host' => 'animenewsnetwork.p.rapidapi.com',
-    'x-rapidapi-key' => 'd4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c'
-));
+//$request->setRequestUrl('https://animenewsnetwork.p.rapidapi.com/api.xml');
+//$request->setRequestMethod('GET');
+//$request->setHeaders(array(
+//    'x-rapidapi-host' => 'animenewsnetwork.p.rapidapi.com',
+//    'x-rapidapi-key' => 'd4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c'
+//));
 
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-$preload_text = $response;
-sendMessage($chat_id, $preload_text);
+//$client->enqueue($request)->send();
+//$response = $client->getResponse();
+//$preload_text = $response;
+//sendMessage($chat_id, $preload_text);
 ?>
