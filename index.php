@@ -41,7 +41,10 @@ curl_close($curl);
 $preload_text = "";
 
 foreach ($response as $key => $value) {
- $preload_text = $preload_text . $key . ":\n " . $value;
+// $preload_text = $preload_text . $key . ":\n " . $value;
+ echo $key;
+ echo "\n";
+ echo $value;
 }
 
 if ($err) {
