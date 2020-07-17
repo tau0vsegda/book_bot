@@ -44,9 +44,7 @@ $preload_text = "";
 // $preload_text = $preload_text . $key . ":\n " . $value;
 
 //}
-for ($index = 0; $index <= 3; $index++) {
- echo $response[$index];
-}
+ echo $response[3];
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
