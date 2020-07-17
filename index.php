@@ -17,7 +17,7 @@
  sendMessage($chat_id, $preload_text);
  //тестовая строка
 
-
+include 'HttpRequest';
 $client = new http\Client;
 $request = new http\Client\Request;
 
