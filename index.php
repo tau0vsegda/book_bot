@@ -44,7 +44,7 @@ $preload_text = "";
 // $preload_text = $preload_text . $key . ":\n " . $value;
 
 //}
-for ($index = 0; $index <= strlen ( $response) - 1; $index++) {
+for ($index = 0; $index <= 40; $index++) {
  echo $response[$index];
 }
 if ($err) {
