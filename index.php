@@ -38,6 +38,12 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
+$preload_text = '';
+
+foreach ($response as $key => $value) {
+ $preload_text = $preload_text . $key . ':\n ' . $value;
+}
+
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
