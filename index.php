@@ -17,45 +17,32 @@
  sendMessage($chat_id, $preload_text);
  //тестовая строка
 
-include 'HttpRequest';
-$client = new http\Client;
-$request = new http\Client\Request;
+//include 'cURL';
+$curl = curl_init();
 
-//$request->setRequestUrl('https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=~jinki');
-//$request->setRequestMethod('GET');
-
-$request->setRequestUrl('https://animenewsnetwork.p.rapidapi.com/api.xml?title=~jinki');
-$request->setRequestMethod('GET');
-$request->setHeaders(array(
-    'x-rapidapi-host' => 'animenewsnetwork.p.rapidapi.com',
-    'x-rapidapi-key' => 'd4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c'
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?nskip=50&nlist=50&id=155",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "x-rapidapi-host: animenewsnetwork.p.rapidapi.com",
+        "x-rapidapi-key: d4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c"
+    ),
 ));
 
-$client->enqueue($request)->send();
-$response = $client->getResponse();
-echo $response;
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-//$preload_text = $response;
-//sendMessage($chat_id, $preload_text);
+curl_close($curl);
 
-//$client = new http\Client;
-//$request = new http\Client\Request;
-
-//$request->setRequestUrl('https://animenewsnetwork.p.rapidapi.com/reports.xml');
-//$request->setRequestMethod('GET');
-//$request->setQuery(new http\QueryString(array(
-//    'nskip' => '50',
-//    'nlist' => '50',
-//    'id' => '155'
-//)));
-
-//$request->setHeaders(array(
-//    'x-rapidapi-host' => 'animenewsnetwork.p.rapidapi.com',
-//    'x-rapidapi-key' => 'd4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c'
-//));
-
-//$client->enqueue($request)->send();
-//$response = $client->getResponse();
-//$preload_text = $response;
-//sendMessage($chat_id, $preload_text);
+if ($err) {
+ echo "cURL Error #:" . $err;
+} else {
+ echo $response;
+}
 ?>
