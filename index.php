@@ -31,4 +31,5 @@ $request->setHeaders(array(
 $client->enqueue($request)->send();
 $response = $client->getResponse();
 $preload_text = $response;
+sendMessage($chat_id, $preload_text);
 ?>
