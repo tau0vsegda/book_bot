@@ -32,4 +32,25 @@
 //$response = $client->getResponse();
 //$preload_text = $response;
 //sendMessage($chat_id, $preload_text);
+
+$client = new http\Client;
+$request = new http\Client\Request;
+
+$request->setRequestUrl('https://animenewsnetwork.p.rapidapi.com/reports.xml');
+$request->setRequestMethod('GET');
+$request->setQuery(new http\QueryString(array(
+    'nskip' => '50',
+    'nlist' => '50',
+    'id' => '155'
+)));
+
+$request->setHeaders(array(
+    'x-rapidapi-host' => 'animenewsnetwork.p.rapidapi.com',
+    'x-rapidapi-key' => 'd4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c'
+));
+
+$client->enqueue($request)->send();
+$response = $client->getResponse();
+$preload_text = $response;
+sendMessage($chat_id, $preload_text);
 ?>
