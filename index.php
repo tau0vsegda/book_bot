@@ -46,4 +46,7 @@ if ($err) {
 } else {
  sendMessage($chat_id, $response);
 }
+
+sendMessage($chat_id, "я завершил работу");
+
 ?>
