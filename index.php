@@ -45,7 +45,7 @@ $preload_text = "";
 
 //}
 
-echo $response[1];
+echo $response[2];
 
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
