@@ -21,7 +21,8 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?manga=11608",
+//    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?manga=11608",
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/xml?manga=11608",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -29,10 +30,10 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_HTTPHEADER => array(
-        "x-rapidapi-host: animenewsnetwork.p.rapidapi.com",
-        "x-rapidapi-key: d4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c"
-    ),
+//    CURLOPT_HTTPHEADER => array(
+//        "x-rapidapi-host: animenewsnetwork.p.rapidapi.com",
+//        "x-rapidapi-key: d4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c"
+//    ),
 ));
 
 $response = curl_exec($curl);
