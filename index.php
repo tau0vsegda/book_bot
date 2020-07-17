@@ -13,7 +13,9 @@
  $first_name = $output['message']['chat']['first_name'];
  $message = $output['message']['text'];
  
- $preload_text = $first_name . ', я получил ваше сообщение!';
+ if ($message == '/start') {
+  $preload_text = 'You are welcome, ' . $first_name . '!';
+ }
  sendMessage($chat_id, $preload_text);
  //тестовая строка
 
@@ -21,7 +23,6 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-//    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?manga=11608",
     CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~berserk",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
@@ -30,10 +31,6 @@ curl_setopt_array($curl, array(
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
-//    CURLOPT_HTTPHEADER => array(
-//        "x-rapidapi-host: animenewsnetwork.p.rapidapi.com",
-//        "x-rapidapi-key: d4298f655cmsh4a328c353b99739p14ed5ejsnd88aacc8e18c"
-//    ),
 ));
 
 $response = curl_exec($curl);
