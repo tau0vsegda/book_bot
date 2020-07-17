@@ -41,11 +41,9 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-$preload_text = $response;
-
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
- sendMessage($chat_id, $preload_text);
+ sendMessage($chat_id, $response);
 }
 ?>
