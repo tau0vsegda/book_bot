@@ -21,7 +21,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?title=~jinki",
+    CURLOPT_URL => "https://animenewsnetwork.p.rapidapi.com/reports.xml?anime=~jinki",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
