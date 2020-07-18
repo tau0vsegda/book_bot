@@ -24,7 +24,7 @@ $curl = curl_init();
 
 curl_setopt_array($curl, array(
 //    CURLOPT_URL => "https://cdn.animenewsnetwork.com/reports.xml?nskip=50&nlist=50&id=155
-    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~god%20eater",
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~god",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
