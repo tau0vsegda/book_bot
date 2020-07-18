@@ -42,7 +42,7 @@ $err = curl_error($curl);
 curl_close($curl);
 
 $xml = simplexml_load_string($response);
-$json = json_encode($xml);
+$json = json_encode($xml, JSON_INVALID_UTF8_IGNORE, 20);
 $array = json_decode($json,TRUE, 20);
 
 echo $response;
