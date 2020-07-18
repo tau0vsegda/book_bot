@@ -43,13 +43,10 @@ $xml = simplexml_load_string($response);
 $json = json_encode($xml);
 $array = json_decode($json,TRUE);
 
-$preload_text = "";
-
-foreach ($array as $key => $value) {
-  echo $key;
-  echo $value;
-}
-// echo $preload_text;
+echo $response;
+echo $xml;
+echo $json;
+echo $array;
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
