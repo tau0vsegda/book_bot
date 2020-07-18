@@ -1,7 +1,7 @@
 <?php
 
 header("Content-Type: text/plain");
- function sendMessage($chat_id, $message) 
+/* function sendMessage($chat_id, $message)
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
  }
@@ -18,7 +18,7 @@ header("Content-Type: text/plain");
  if ($message == '/start') {
   $preload_text = 'You are welcome, ' . $first_name . '!';
  }
- sendMessage($chat_id, $preload_text);
+ sendMessage($chat_id, $preload_text);*/
  //тестовая строка
 
 $curl = curl_init();
@@ -29,7 +29,7 @@ curl_setopt_array($curl, array(
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
+    CURLOPT_TIMEOUT => 9000,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
 ));
@@ -43,6 +43,8 @@ curl_close($curl);
 //echo $response;
 
 $array = simplexml_load_file($response);
+
+
 
 function test($mas) {
 foreach ($mas as $key => $value) {
@@ -61,4 +63,4 @@ foreach ($mas as $key => $value) {
  sendMessage($chat_id, $array);
 }*/
 
-sendMessage($chat_id, "я завершил работу");
+//sendMessage($chat_id, "я завершил работу");
