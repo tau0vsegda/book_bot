@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/plain");
 function sendMessage($chat_id, $message)
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
@@ -59,13 +58,13 @@ foreach ($mas as $key => $value) {
 foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
   if (($key1 == "info") && ($value1["type"] == "Picture")) {
-   sendMessage($chat_id, $value1["src"]);
+   echo "<br><img src=\"" . $value1["src"] . "\">";
   }
   if (($key1 == "info") && ($value1["type"] == "Main title")) {
-   sendMessage($chat_id, "\nname: " . $value1);
+   echo "<br>name: " . $value1;
   }
   if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
-   sendMessage($chat_id, "\nsummary: " . $value1);
+   echo "<br>summary: " . $value1;
   }
  }
 }
@@ -77,4 +76,4 @@ foreach ($array -> manga as $key => $value) {
  sendMessage($chat_id, $array);
 }*/
 
-//sendMessage($chat_id, "я завершил работу");
+sendMessage($chat_id, "я завершил работу");
