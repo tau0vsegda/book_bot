@@ -47,9 +47,9 @@ $preload_text = "";
 
 foreach ($array as $key => $value) {
 // $preload_text = $preload_text . $key . ":\n " . $value . "\n";
- echo $value;
+ $preload_text = $preload_text . "\n\n\n" .  $key . "\n\n\n" . $value;
 }
- echo $response;
+ echo $preload_text;
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
