@@ -47,7 +47,7 @@ $preload_text = "";
 
 foreach ($array as $key => $value) {
 // $preload_text = $preload_text . $key . ":\n " . $value . "\n";
- echo $key;
+ echo $value;
 }
  echo $response;
 if ($err) {
