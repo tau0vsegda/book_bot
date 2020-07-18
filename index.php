@@ -46,7 +46,7 @@ $array = simplexml_load_file($response);
 
 function test($mas) {
 foreach ($mas as $key => $value) {
-  if (is_array($value)) {
+  if (is_object($value)) {
    test($value);
   } else {
   echo $value . "\n";
