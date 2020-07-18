@@ -44,7 +44,7 @@ curl_close($curl);
 
 $xml = simplexml_load_string($response);
 $json = json_encode($xml, JSON_UNESCAPED_UNICODE);
-echo $json;
+//echo $json;
 $array = json_decode($json,TRUE);
 function test($mas) {
 foreach ($mas as $key => $value) {
