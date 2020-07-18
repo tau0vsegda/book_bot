@@ -1,6 +1,6 @@
 <?php
 
-/*function sendMessage($chat_id, $message)
+function sendMessage($chat_id, $message)
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
  }
@@ -17,10 +17,10 @@
  if ($message == '/start') {
   $preload_text = 'You are welcome, ' . $first_name . '!';
  }
- sendMessage($chat_id, $preload_text);  */
+ sendMessage($chat_id, $preload_text);
  //тестовая строка
 
-$curl = curl_init();
+/*$curl = curl_init();
 
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~noragami",
@@ -45,7 +45,7 @@ if (!$err) {
  echo $response;
 // $array = new SimpleXMLElement("$response");
 }
-else {echo $err;}
+else {echo $err;}*/
 
 
 /*function test($mas) {
@@ -79,5 +79,7 @@ foreach ($mas as $key => $value) {
  sendMessage($chat_id, $array);
 }*/
 
-//sendMessage($chat_id, "я завершил работу");
+sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
+
+sendMessage($chat_id, "я завершил работу");
 ?>
