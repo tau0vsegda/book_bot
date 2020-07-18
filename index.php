@@ -48,11 +48,11 @@ echo $json;
 $array = json_decode($json,TRUE);
 function test($mas) {
 foreach ($mas as $key => $value) {
-  echo $key . "\n";
+  echo $key . ":\n";
   if (is_array($value)) {
    test($value);
   } else {
-  echo $value;
+  echo $value . "\n";
  }}}
 
  test($array);
