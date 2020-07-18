@@ -1,6 +1,6 @@
 <?php
 
-header("Content-Type: text/plain");
+//header("Content-Type: text/plain");
  function sendMessage($chat_id, $message) 
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
