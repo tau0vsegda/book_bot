@@ -98,7 +98,7 @@ $response = <<<XML
 </ann>
 XML;
 
-
+echo $response;
 
 $xml = simplexml_load_string($response);
 echo $xml;
