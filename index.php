@@ -24,7 +24,7 @@ header("Content-Type: text/plain");
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~god",
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~noragami",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -44,7 +44,7 @@ curl_close($curl);
 
 $xml = simplexml_load_string($response);
 $json = json_encode($xml, JSON_UNESCAPED_UNICODE);
-//echo $json;
+echo $json;
 $array = json_decode($json,TRUE);
 
 function test($mas) {
@@ -56,7 +56,7 @@ foreach ($mas as $key => $value) {
   echo $value . "\n";
  }}}
 
- test($array);
+// test($array);
 
 
 /*if ($err) {
