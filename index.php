@@ -44,8 +44,11 @@ $json = json_encode($xml);
 $array = json_decode($json,TRUE);
 
 echo $response;
+echo "\n\n\n";
 echo $xml;
+echo "\n\n\n";
 echo $json;
+echo "\n\n\n";
 echo $array;
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
