@@ -24,7 +24,7 @@ $curl = curl_init();
 
 curl_setopt_array($curl, array(
 //    CURLOPT_URL => "https://cdn.animenewsnetwork.com/reports.xml?nskip=50&nlist=50&id=155
-    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~god%20eater",
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~jinki",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -39,10 +39,14 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
+$xml = simplexml_load_string($response);
+$json = json_encode($xml);
+$array = json_decode($json,TRUE);
+
 $preload_text = "";
 
-//foreach ($response as $key => $value) {
-// $preload_text = $preload_text . $key . ":\n " . $value;
+foreach ($array as $key => $value) {
+ $preload_text = $preload_text . $key . ":\n " . $value . "\n";
 
 //}
  echo $response;
