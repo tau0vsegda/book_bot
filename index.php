@@ -42,7 +42,8 @@ curl_close($curl);
 //echo $response;
 
 if (!$err) {
- $array = new SimpleXMLElement("$response");
+ echo $response;
+ //$array = new SimpleXMLElement("$response");
 }
 else {echo $err;}
 
@@ -57,7 +58,7 @@ foreach ($mas as $key => $value) {
 
   test($array);*/
 
-foreach ($array -> manga as $key => $value) {
+/*foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
   if (($key1 == "info") && ($value1["type"] == "Picture")) {
    echo "<br><img src=\"" . $value1["src"] . "\">";
@@ -69,7 +70,7 @@ foreach ($array -> manga as $key => $value) {
    echo "<br>summary: " . $value1;
   }
  }
-}
+}*/
 
 
 /*if ($err) {
