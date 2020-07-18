@@ -42,7 +42,7 @@ curl_close($curl);
 //echo $response;
 
 if (!$err) {
- $array = new SimpleXMLElement($response);
+ $array = new SimpleXMLElement("$response");
 }
 else {echo $err;}
 
