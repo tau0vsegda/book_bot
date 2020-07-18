@@ -1,7 +1,7 @@
 <?php
 
 header("Content-Type: text/plain");
-/* function sendMessage($chat_id, $message)
+function sendMessage($chat_id, $message)
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
  }
@@ -18,7 +18,7 @@ header("Content-Type: text/plain");
  if ($message == '/start') {
   $preload_text = 'You are welcome, ' . $first_name . '!';
  }
- sendMessage($chat_id, $preload_text);*/
+ sendMessage($chat_id, $preload_text);
  //тестовая строка
 
 $curl = curl_init();
@@ -42,11 +42,11 @@ curl_close($curl);
 
 //echo $response;
 
-$array = simplexml_load_file($response);
+$array = new SimpleXMLElement($response);
 
 
 
-function test($mas) {
+/*function test($mas) {
 foreach ($mas as $key => $value) {
   if (is_object($value)) {
    test($value);
@@ -54,7 +54,21 @@ foreach ($mas as $key => $value) {
   echo $value . "\n";
  }}}
 
-  test($array);
+  test($array);*/
+
+foreach ($array -> manga as $key => $value) {
+ foreach ($value as $key1 => $value1) {
+  if (($key1 == "info") && ($value1["type"] == "Picture")) {
+   sendMessage($chat_id, $value1["src"]);
+  }
+  if (($key1 == "info") && ($value1["type"] == "Main title")) {
+   sendMessage($chat_id, "\nname: " . $value1);
+  }
+  if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
+   sendMessage($chat_id, "\nsummary: " . $value1);
+  }
+ }
+}
 
 
 /*if ($err) {
