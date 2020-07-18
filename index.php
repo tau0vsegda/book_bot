@@ -46,10 +46,10 @@ $array = json_decode($json,TRUE);
 $preload_text = "";
 
 foreach ($array as $key => $value) {
-// $preload_text = $preload_text . $key . ":\n " . $value . "\n";
- $preload_text = $preload_text . "\n\n\n" .  $key . "\n\n\n" . $value;
+  echo $key;
+  echo $value;
 }
- echo $preload_text;
+// echo $preload_text;
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
