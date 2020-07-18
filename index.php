@@ -55,6 +55,8 @@ function test($mas) {
   }
 }
 
+test($array);
+
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
