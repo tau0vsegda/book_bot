@@ -79,7 +79,9 @@ foreach ($mas as $key => $value) {
  sendMessage($chat_id, $array);
 }*/
 
-sendMessage($chat_id, cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg);
+//sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
+sendPhoto($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 
 sendMessage($chat_id, "я завершил работу");
+
 ?>
