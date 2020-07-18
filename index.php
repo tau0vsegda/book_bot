@@ -28,7 +28,7 @@ curl_setopt_array($curl, array(
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 9000,
+    CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
 ));
@@ -41,8 +41,10 @@ curl_close($curl);
 
 //echo $response;
 
-$array = new SimpleXMLElement($response);
-
+if (!$err) {
+ $array = new SimpleXMLElement($response);
+}
+else {echo $err;}
 
 
 /*function test($mas) {
