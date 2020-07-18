@@ -43,6 +43,7 @@ curl_close($curl);
 //echo $response;
 
 $xml = simplexml_load_string($response);
+echo $xml;
 $json = json_encode($xml, JSON_UNESCAPED_UNICODE);
 echo $json;
 $array = json_decode($json,TRUE);
