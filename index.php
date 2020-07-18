@@ -46,6 +46,10 @@ $xml = simplexml_load_string($response);
 $json = json_encode($xml, JSON_UNESCAPED_UNICODE);
 echo $json;
 $array = json_decode($json,TRUE);
+ foreach ($array as $key => $value) {
+  echo $key;
+  echo $value;
+ }
 
 
 /*if ($err) {
