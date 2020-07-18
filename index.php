@@ -41,14 +41,16 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-$xml = simplexml_load_string($response);
-$json = json_encode($xml);
-echo $json;
-$array = json_decode($json,TRUE);
+echo $response;
+
+//$xml = simplexml_load_string($response);
+//$json = json_encode($xml);
+//echo $json;
+//$array = json_decode($json,TRUE);
 
 //
 
-test($array);
+//test($array);
 
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
