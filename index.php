@@ -1,6 +1,6 @@
 <?php
 
-//header("Content-Type: text/plain");
+header("Content-Type: text/plain");
  function sendMessage($chat_id, $message) 
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
@@ -43,17 +43,10 @@ curl_close($curl);
 
 $xml = simplexml_load_string($response);
 $json = json_encode($xml);
+echo $json;
 $array = json_decode($json,TRUE);
 
-function test($mas) {
-  foreach ($mas as $key => $value) {
-   if (is_array($value)) {
-    test($value);
-   } else {
-    echo $key . "\n" . $value;
-   }
-  }
-}
+//
 
 test($array);
 
