@@ -21,41 +21,35 @@ header("Content-Type: text/plain");
  sendMessage($chat_id, $preload_text);
  //тестовая строка
 
-//include 'cURL';
-//$curl = curl_init();
+$curl = curl_init();
 
-//curl_setopt_array($curl, array(
-//    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~jinki",
-//    CURLOPT_RETURNTRANSFER => true,
-//    CURLOPT_FOLLOWLOCATION => true,
-//    CURLOPT_ENCODING => "",
-//    CURLOPT_MAXREDIRS => 10,
-//    CURLOPT_TIMEOUT => 30,
-//    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//    CURLOPT_CUSTOMREQUEST => "GET",
-//));
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~jinki",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+));
 
-//$response = curl_exec($curl);
-//$err = curl_error($curl);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-//curl_close($curl);
-
-//echo $response;
+curl_close($curl);
 
 
-//$xml = simplexml_load_string($response);
-//$json = json_encode($xml);
-//echo $json;
-//$array = json_decode($json,TRUE);
+$xml = simplexml_load_string($response);
+$json = json_encode($xml);
+echo $json;
+$array = json_decode($json,TRUE);
 
-//
-
-//test($array);
 
 if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
- sendMessage($chat_id, $response);
+ sendMessage($chat_id, $array);
 }
 
 sendMessage($chat_id, "я завершил работу");
