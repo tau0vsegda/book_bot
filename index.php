@@ -42,22 +42,17 @@ curl_close($curl);
 
 //echo $response;
 
-$xml = simplexml_load_string($response);
-echo $xml;
-$json = json_encode($xml, JSON_UNESCAPED_UNICODE);
-echo $json;
-$array = json_decode($json,TRUE);
+$array = simplexml_load_file($response);
 
 function test($mas) {
 foreach ($mas as $key => $value) {
-  echo $key . ":\n";
   if (is_array($value)) {
    test($value);
   } else {
   echo $value . "\n";
  }}}
 
-// test($array);
+  test($array);
 
 
 /*if ($err) {
