@@ -106,11 +106,11 @@ echo $json;
 $array = json_decode($json,TRUE);
 
 
-if ($err) {
+/*if ($err) {
  sendMessage($chat_id, "cURL Error #:" . $err);
 } else {
  sendMessage($chat_id, $array);
-}
+}*/
 
 sendMessage($chat_id, "я завершил работу");
 
