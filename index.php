@@ -101,6 +101,7 @@ XML;
 
 
 $xml = simplexml_load_string($response);
+echo $xml;
 $json = json_encode($xml);
 echo $json;
 $array = json_decode($json,TRUE);
