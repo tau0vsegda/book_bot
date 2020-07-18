@@ -24,7 +24,7 @@ header("Content-Type: text/plain");
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~noragami",
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~god",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_ENCODING => "",
@@ -46,6 +46,7 @@ $xml = simplexml_load_string($response);
 $json = json_encode($xml, JSON_UNESCAPED_UNICODE);
 //echo $json;
 $array = json_decode($json,TRUE);
+
 function test($mas) {
 foreach ($mas as $key => $value) {
   echo $key . ":\n";
@@ -65,5 +66,3 @@ foreach ($mas as $key => $value) {
 }*/
 
 sendMessage($chat_id, "я завершил работу");
-
-?>
