@@ -43,7 +43,7 @@ curl_close($curl);
 
 $xml = simplexml_load_string($response);
 $json = json_encode($xml);
-$array = json_decode($json,TRUE);
+$array = json_decode($json,TRUE, $depth = 20);
 
 echo $response;
 echo "\n\n\n";
