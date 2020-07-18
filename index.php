@@ -46,7 +46,8 @@ $array = json_decode($json,TRUE);
 $preload_text = "";
 
 foreach ($array as $key => $value) {
- $preload_text = $preload_text . $key . ":\n " . $value . "\n";
+// $preload_text = $preload_text . $key . ":\n " . $value . "\n";
+ echo $key;
 }
  echo $response;
 if ($err) {
