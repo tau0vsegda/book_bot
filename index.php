@@ -67,8 +67,8 @@ function sendMessage($chat_id, $message)
       $mes["Picture"] = $value1["src"];
      }
     }
+    sendMessage($chat_id, $mes["Name"] . "\n" . $mes["Summary"] . "\n" . $mes["Picture"]);
    }
-   sendMessage($chat_id, $mes["Name"] . "\n" . $mes["Summary"] . "\n" . $mes["Picture"]);
   } else {
    sendMessage($chat_id, "we have a problem, sorry... (" . $err . ")");
   }
