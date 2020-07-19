@@ -13,11 +13,12 @@ function sendMessage($chat_id, $message)
  $chat_id = $output['message']['chat']['id'];
  $first_name = $output['message']['chat']['first_name'];
  $message = $output['message']['text'];
+
+ sendMessage($chat_id, "я начал работу");
  
  if ($message == '/start') {
   sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
  }else {
-
 
   $curl = curl_init();
 
