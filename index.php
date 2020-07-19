@@ -42,7 +42,6 @@ curl_close($curl);
 //echo $response;
 
 if (!$err) {
- echo $response;
   $array = new SimpleXMLElement("$response");
 }
 else {echo $err;}
@@ -61,13 +60,13 @@ if (!$err) {
 foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
   if (($key1 == "info") && ($value1["type"] == "Picture")) {
-   echo "<br><img src=\"" . $value1["src"] . "\">";
+   sendMessage($chat_id, $value1["src"]);
   }
   if (($key1 == "info") && ($value1["type"] == "Main title")) {
-   echo "<br>name: " . $value1;
+   sendMessage($chat_id, $value1);
   }
   if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
-   echo "<br>summary: " . $value1;
+   sendMessage($chat_id, $value1);
   }
  }
 }}
