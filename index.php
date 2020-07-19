@@ -78,7 +78,7 @@ function sendMessage($chat_id, $message)
 
   if (!$err) {
 
-   foreach ($array->manga as $key => $value) {
+   foreach ($array as $key => $value) {
 
     $mes = array(
         "Name" => "",
