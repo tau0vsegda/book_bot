@@ -23,7 +23,7 @@ function sendMessage($chat_id, $message)
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~$message",
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $message,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_ENCODING => "",
