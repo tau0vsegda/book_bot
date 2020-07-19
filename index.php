@@ -47,7 +47,7 @@ function sendMessage($chat_id, $message)
    echo $err;
   }
 
-  $mes = array(
+ /* $mes = array(
       "Name" => "",
       "Summary" => "",
       "Picture" => "",
@@ -106,9 +106,7 @@ if (!$err) {
    } else {sendMessage($chat_id, "Not found");}
 
   }
- }
-
- } else {sendMessage($chat_id, $err);}
+ }} else {sendMessage($chat_id, $err);}
 
 
 
