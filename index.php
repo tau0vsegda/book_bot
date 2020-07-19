@@ -18,7 +18,7 @@ function sendMessage($chat_id, $message)
  
  if ($message == '/start') {
   sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
- }elseif (preg_match("/^[0-9A-Za-z ]*$/", $message)) {
+ }elseif (preg_match("/^[A-Za-z]*$/", $message)) {
 
   $curl = curl_init();
 
@@ -66,7 +66,7 @@ function sendMessage($chat_id, $message)
      foreach ($value as $key1 => $value1) {
       if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
        foreach ($value1 as $key2 => $value2) {
-        $mes["Picture"] = $value1["src"];
+        $mes["Picture"] = $value2["src"];
        }
       } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
        $mes["Picture"] = $value1["src"];
