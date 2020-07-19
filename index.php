@@ -57,7 +57,7 @@ function sendMessage($chat_id, $message)
     );
 
     foreach ($value as $key1 => $value1) {
-     if (($key1 == "info") && ($value1["type"] != "Genres") && ($value1 == "erotica")) {
+     if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 != "erotica")) {
       if (($key1 == "info") && ($value1["type"] == "Main title")) {
        $mes["Name"] = $value1;
       }
