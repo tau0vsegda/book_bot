@@ -4,7 +4,7 @@ function sendMessage($chat_id, $message)
  {
  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
  }
- 
+ /*
  $access_token = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
  $api = 'https://api.telegram.org/bot' . $access_token;
  
@@ -18,7 +18,7 @@ function sendMessage($chat_id, $message)
   $preload_text = 'You are welcome, ' . $first_name . '!';
  }
  sendMessage($chat_id, $preload_text);
- //тестовая строка
+ //тестовая строка    */
 
 $curl = curl_init();
 
@@ -92,6 +92,6 @@ sendMessage($chat_id, $message["Name"] . "\n" . $message["Summary"] . "\n" . $me
 //sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 //sendPhoto($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 
-sendMessage($chat_id, "я завершил работу");
+//sendMessage($chat_id, "я завершил работу");
 
 ?>
