@@ -20,7 +20,7 @@ function sendMessage($chat_id, $message)
  sendMessage($chat_id, $preload_text);
  //тестовая строка
 
-/*$curl = curl_init();
+$curl = curl_init();
 
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~noragami",
@@ -43,9 +43,9 @@ curl_close($curl);
 
 if (!$err) {
  echo $response;
-// $array = new SimpleXMLElement("$response");
+  $array = new SimpleXMLElement("$response");
 }
-else {echo $err;}*/
+else {echo $err;}
 
 
 /*function test($mas) {
@@ -57,8 +57,8 @@ foreach ($mas as $key => $value) {
  }}}
 
   test($array);*/
-
-/*foreach ($array -> manga as $key => $value) {
+if (!$err) {
+foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
   if (($key1 == "info") && ($value1["type"] == "Picture")) {
    echo "<br><img src=\"" . $value1["src"] . "\">";
@@ -70,7 +70,7 @@ foreach ($mas as $key => $value) {
    echo "<br>summary: " . $value1;
   }
  }
-}*/
+}}
 
 
 /*if ($err) {
@@ -79,7 +79,7 @@ foreach ($mas as $key => $value) {
  sendMessage($chat_id, $array);
 }*/
 
-sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
+//sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 //sendPhoto($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 
 sendMessage($chat_id, "я завершил работу");
