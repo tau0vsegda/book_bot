@@ -104,10 +104,9 @@ function sendMessage($chat_id, $message)
 
      }
 
-    } else {
-     sendMessage($chat_id, "Not found");
     }
-   }
+    }
+
   } else {
    sendMessage($chat_id, $err);
   }
