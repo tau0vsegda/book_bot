@@ -102,10 +102,10 @@ function sendMessage($chat_id, $message)
 
       sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
 
-     } else {
-      sendMessage($chat_id, "Not found");
      }
 
+    } else {
+     sendMessage($chat_id, "Not found");
     }
    }
   } else {
