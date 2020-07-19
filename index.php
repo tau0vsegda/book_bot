@@ -22,7 +22,7 @@ function sendMessage($chat_id, $message)
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=1223",// . $message,
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $message,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_ENCODING => "",
@@ -45,36 +45,6 @@ function sendMessage($chat_id, $message)
   } else {
    echo $err;
   }
-
-  /* $mes = array(
-       "Name" => "",
-       "Summary" => "",
-       "Picture" => "",
-
-   );
- /*
-   if (!$err) {
-    foreach ($array->manga as $key => $value) {
-     $mes = array(
-         "Name" => "",
-         "Summary" => "",
-         "Picture" => "",
-     );
-     foreach ($value as $key1 => $value1) {
-      if (($key1 == "info") && ($value1["type"] == "Main title"))  {
-       $mes["Name"] = $value1;
- //     }
-      if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
-       $mes["Summary"] = $value1;
-      }
-      if (($key1 == "info") && ($value1["type"] == "Picture")) {
-       $mes["Picture"] = $value1["src"];
-      }
-     sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
-    }}
-   } else {
-    sendMessage($chat_id, "we have a problem, sorry... (" . $err . ")");
-   }*/
 
   if (!$err) {
 
