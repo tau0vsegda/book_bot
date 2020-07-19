@@ -56,20 +56,31 @@ foreach ($mas as $key => $value) {
  }}}
 
   test($array);*/
+
+$message = array(
+  "Name" => "",
+  "Summary" => "",
+  "Picture" => "",
+
+);
+
 if (!$err) {
 foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
-  if (($key1 == "info") && ($value1["type"] == "Picture")) {
-   sendMessage($chat_id, <a href="https://www.nafasbekesh.ir/wp-content/uploads/2016/10/img1.jpg">⁠</a>);
-  }
   if (($key1 == "info") && ($value1["type"] == "Main title")) {
-   sendMessage($chat_id, $value1);
+   $message["Name"] = $value1;
   }
   if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
-   sendMessage($chat_id, $value1);
+   $message["Summary"] = $value1;
+  }
+  if (($key1 == "info") && ($value1["type"] == "Picture")) {
+   $message["Picture"] = $value1["src"];
   }
  }
-}}
+}
+sendMessage($chat_id, $message["Name"] . "\n" . $message["Summary"] . "\n" . $message["Picture"]);
+} else { sendMessage($chat_id, "we have a problem, sorry...");}
+
 
 
 /*if ($err) {
