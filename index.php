@@ -59,7 +59,7 @@ function sendMessage($chat_id, $message)
     $censor = true;
 
     foreach ($value as $key1 => $value1) {
-     if (($key1 == "info") && (is_object($value1))) {
+     if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
       foreach ($value1 as $key2 => $value2) {
        $mes["Picture"] = $value1["src"];
       }
