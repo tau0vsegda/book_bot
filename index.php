@@ -70,10 +70,9 @@ function sendMessage($chat_id, $message)
      }
      if (($key1 == "info") && ($value1["type"] == "Picture")) {
       $mes["Picture"] = $value1["src"];
-     }}
-    }
+     }
     sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
-   }
+   }}}
   } else {
    sendMessage($chat_id, "we have a problem, sorry... (" . $err . ")");
   }
