@@ -69,9 +69,9 @@ function sendMessage($chat_id, $message)
     }
    }
    sendMessage($chat_id, $mes["Name"] . "\n" . $mes["Summary"] . "\n" . $mes["Picture"]);
-  } else {
-   sendMessage($chat_id, "we have a problem, sorry...");
-  }
+  }// else {
+//   sendMessage($chat_id, "we have a problem, sorry...");
+//  }
  }
 
 
