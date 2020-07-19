@@ -50,22 +50,26 @@ function sendMessage($chat_id, $message)
 
    foreach ($array as $key => $value) {
 
-    $mes = array(
-        "Name" => "",
-        "Summary" => "",
-        "Picture" => "",
-    );
+    if ($key == "warning") {
+     sendMessage($chat_id, "Not found");
+    } else {
 
-    $censor = true;
+     $mes = array(
+         "Name" => "",
+         "Summary" => "",
+         "Picture" => "",
+     );
 
-    foreach ($value as $key1 => $value1) {
-     if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
-      foreach ($value1 as $key2 => $value2) {
+     $censor = true;
+
+     foreach ($value as $key1 => $value1) {
+      if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
+       foreach ($value1 as $key2 => $value2) {
+        $mes["Picture"] = $value1["src"];
+       }
+      } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
        $mes["Picture"] = $value1["src"];
       }
-     } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
-      $mes["Picture"] = $value1["src"];
-     }
       if (($key1 == "info") && ($value1["type"] == "Main title")) {
        $mes["Name"] = $value1;
       }
@@ -75,10 +79,11 @@ function sendMessage($chat_id, $message)
       if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 == "erotica")) {
        $censor = false;
       }
+     }
+     if ($censor) {
+      sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
+     }
     }
-    if ($censor){
-    sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
-   }
    }
   } else {
    sendMessage($chat_id, $err);
