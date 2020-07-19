@@ -41,7 +41,7 @@ function sendMessage($chat_id, $message)
 //echo $response;
 
   if (!$err) {
-   $array = new SimpleXMLElement("$response");
+   $array = new SimpleXMLElement($response);
   } else {
    echo $err;
   }
