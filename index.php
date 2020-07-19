@@ -60,7 +60,7 @@ if (!$err) {
 foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
   if (($key1 == "info") && ($value1["type"] == "Picture")) {
-   sendMessage($chat_id, $value1["src"]);
+   sendMessage($chat_id, <a href="https://www.nafasbekesh.ir/wp-content/uploads/2016/10/img1.jpg">⁠</a>);
   }
   if (($key1 == "info") && ($value1["type"] == "Main title")) {
    sendMessage($chat_id, $value1);
