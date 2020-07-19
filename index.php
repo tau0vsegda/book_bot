@@ -23,7 +23,7 @@ function sendMessage($chat_id, $message)
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $message,
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $message['text'],
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_ENCODING => "",
@@ -69,9 +69,9 @@ function sendMessage($chat_id, $message)
     }
    }
    sendMessage($chat_id, $mes["Name"] . "\n" . $mes["Summary"] . "\n" . $mes["Picture"]);
-  }// else {
-//   sendMessage($chat_id, "we have a problem, sorry...");
-//  }
+  } else {
+   sendMessage($chat_id, "we have a problem, sorry... (" . $err . ")");
+  }
  }
 
 
