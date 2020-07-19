@@ -53,7 +53,7 @@ function sendMessage($chat_id, $message)
       "Picture" => "",
 
   );
-
+/*
   if (!$err) {
    foreach ($array->manga as $key => $value) {
     $mes = array(
@@ -62,7 +62,7 @@ function sendMessage($chat_id, $message)
         "Picture" => "",
     );
     foreach ($value as $key1 => $value1) {
-     if (($key1 == "info") && ($value1["type"] == "Main title") && ($value1 == "One Piece"))  {
+     if (($key1 == "info") && ($value1["type"] == "Main title"))  {
       $mes["Name"] = $value1;
 //     }
      if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
@@ -72,11 +72,44 @@ function sendMessage($chat_id, $message)
       $mes["Picture"] = $value1["src"];
      }
     sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
-   }}}
+   }}
   } else {
    sendMessage($chat_id, "we have a problem, sorry... (" . $err . ")");
+  }*/
+
+if (!$err) {
+
+ foreach ($array->manga as $key => $value) {
+
+  $mes = array(
+      "Name" => "",
+      "Summary" => "",
+      "Picture" => "",
+  );
+
+  foreach ($value as $key1 => $value1) {
+
+   if (($key1 == "info") && ($value1["type"] == "Main title") && ($value1 == "One Piece")) {
+
+    $mes["Name"] = $value1;
+
+    if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
+     $mes["Summary"] = $value1;
+    }
+
+    if (($key1 == "info") && ($value1["type"] == "Picture")) {
+     $mes["Picture"] = $value1["src"];
+    }
+
+    sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
+
+   } else {sendMessage($chat_id, "Not found");}
+
   }
  }
+
+ } else {sendMessage($chat_id, $err);}
+
 
 
 
