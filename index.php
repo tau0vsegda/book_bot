@@ -47,7 +47,7 @@ if (!$err) {
 else {echo $err;}
 
 
-/*function test($mas) {
+function test($mas) {
 foreach ($mas as $key => $value) {
   if (is_object($value)) {
    test($value);
@@ -55,7 +55,7 @@ foreach ($mas as $key => $value) {
   echo $value . "\n";
  }}}
 
-  test($array);*/
+  test($array);
 
 $message = array(
   "Name" => "",
@@ -63,7 +63,7 @@ $message = array(
   "Picture" => "",
 
 );
-
+/*
 if (!$err) {
 foreach ($array -> manga as $key => $value) {
  foreach ($value as $key1 => $value1) {
@@ -80,7 +80,7 @@ foreach ($array -> manga as $key => $value) {
 }
 sendMessage($chat_id, $message["Name"] . "\n" . $message["Summary"] . "\n" . $message["Picture"]);
 } else { sendMessage($chat_id, "we have a problem, sorry...");}
-
+*/
 
 
 /*if ($err) {
