@@ -9,7 +9,7 @@ function sendMessage($chat_id, $message)
  $api = 'https://api.telegram.org/bot' . $access_token;
  
  
- $output = json_decode(file_get_contents('php://input'), TRUE);
+ $output = json_decode(file_get_contents('php://input'), true);
  $chat_id = $output['message']['chat']['id'];
  $first_name = $output['message']['chat']['first_name'];
  $message = $output['message']['text'];
@@ -56,21 +56,29 @@ function sendMessage($chat_id, $message)
         "Picture" => "",
     );
 
+    $censor = true;
+
     foreach ($value as $key1 => $value1) {
-     if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 != "erotica")) {
+     if (($key1 == "info") && (is_object($value1))) {
+      foreach ($value1 as $key2 => $value2) {
+       $mes["Picture"] = $value1["src"];
+      }
+     } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
+      $mes["Picture"] = $value1["src"];
+     }
       if (($key1 == "info") && ($value1["type"] == "Main title")) {
        $mes["Name"] = $value1;
       }
       if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
        $mes["Summary"] = $value1;
       }
-
-      if (($key1 == "info") && ($value1["type"] == "Picture")) {
-       $mes["Picture"] = $value1["src"];
+      if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 == "erotica")) {
+       $censor = false;
       }
-      sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
-     }
     }
+    if ($censor){
+    sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
+   }
    }
   } else {
    sendMessage($chat_id, $err);
