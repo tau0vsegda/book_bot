@@ -14,11 +14,11 @@ function sendMessage($chat_id, $message)
  $first_name = $output['message']['chat']['first_name'];
  $message = $output['message']['text'];
 
- sendMessage($chat_id, "я начал работу");
+ //sendMessage($chat_id, "я начал работу");
  
  if ($message == '/start') {
   sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
- }else {
+ }elseif (preg_match("/^[0-9A-Za-z ]*$/", $message)) {
 
   $curl = curl_init();
 
@@ -101,6 +101,6 @@ function sendMessage($chat_id, $message)
 //sendMessage($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 //sendPhoto($chat_id, "cdn.animenewsnetwork.com/thumbnails/max500x600/encyc/A11608-3.jpg");
 
-sendMessage($chat_id, "я завершил работу");
+//sendMessage($chat_id, "я завершил работу");
 
 ?>
