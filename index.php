@@ -56,6 +56,12 @@ function sendMessage($chat_id, $message)
 
   if (!$err) {
    foreach ($array->manga as $key => $value) {
+    $mes = array(
+        "Name" => "",
+        "Summary" => "",
+        "Picture" => "",
+
+    );
     foreach ($value as $key1 => $value1) {
      if (($key1 == "info") && ($value1["type"] == "Main title")) {
       $mes["Name"] = $value1;
