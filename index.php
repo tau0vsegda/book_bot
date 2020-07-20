@@ -17,7 +17,7 @@
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
     sendMessage($chat_id, "I start to find the manga.");
 
-    if (preg_match("/^ *$/", $message)) {
+ //   if (preg_match("/^ *$/", $message)) {
       $words = explode(" ", $message);
       sendMessage($chat_id, "create the array of words.");
       $manga = $words[0];
@@ -25,10 +25,10 @@
         if (strlen($words[$index - 1]) < strlen($words[$index])) {
           $manga = $words[$index];
         }
-      }
-    } else {
+     }
+ /*   } else {
       $manga = $message;
-    }
+    }*/
 
     $curl = curl_init();
 
