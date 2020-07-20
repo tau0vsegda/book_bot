@@ -66,7 +66,7 @@
 
           $wordsConsist = true;
           foreach ($words as $word) {
-            if (!preg_match("/" . $word . "/{i}", $value["name"])) {
+            if (srtipos($value["name"], $word) === false) {
               $wordsConsist = false;
               break;
             }
