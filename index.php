@@ -64,7 +64,15 @@
 
           $censor = true;
 
-//          if (preg_match($message, $value["name"])) {
+          $wordsConsist = true;
+          foreach ($words as $word) {
+            if (!preg_match("/" . $word . "/{i}", $value["name"])) {
+              $wordsConsist = false;
+              break;
+            }
+          }
+
+          if ($wordsConsist) {
 
             foreach ($value as $key1 => $value1) {
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
@@ -84,7 +92,7 @@
                 $censor = false;
               }
             }
-//          }
+          }
           if ($censor) {
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
           }
