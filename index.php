@@ -15,7 +15,7 @@
   if ($message == '/start') {
     sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
-    sendMessage($chat_id, "I start to find the manga.");
+ //   sendMessage($chat_id, "I start to find the manga.");
 
  //   if (preg_match("/^ *$/", $message)) {
       $words = explode(" ", $message);
