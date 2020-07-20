@@ -17,6 +17,7 @@
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
+      sendMessage($chat_id, "start of finding");
       $manga = $words[0];
       for ($index = 1; $index <= array_key_last($words); $index++) {
         if (strlen($words[$index - 1]) < strlen($words[$index])) {
@@ -66,7 +67,7 @@
 
           $wordsConsist = true;
           foreach ($words as $word) {
-            if (srtipos($value["name"], $word) === false) {
+            if (!preg_match("/" . $word . "/i", $value["name"])) {
               $wordsConsist = false;
               break;
             }
