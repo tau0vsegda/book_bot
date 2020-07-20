@@ -91,9 +91,9 @@
           }
         }
       }
-    }/* else {
+    } else {
       sendMessage($chat_id, $err);
-    }*/
+    }
   }
 
 ?>
