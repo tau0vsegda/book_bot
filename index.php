@@ -17,7 +17,7 @@
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
     sendMessage($chat_id, "I start to find the manga.");
 
-    if (preg_match("/^\ *$/")) {
+    if (preg_match("/^ *$/", $message)) {
       $words = explode(" ", $message);
       sendMessage($chat_id, "create the array of words.");
       $manga = $words[0];
