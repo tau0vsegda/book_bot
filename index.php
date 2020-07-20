@@ -19,11 +19,6 @@
       $words = explode(" ", $message);
       sendMessage($chat_id, "start of finding");
       $manga = $words[0];
-      for ($index = 1; $index <= array_key_last($words); $index++) {
-        if (strlen($words[$index - 1]) < strlen($words[$index])) {
-          $manga = $words[$index];
-        }
-     }
 
     $curl = curl_init();
 
