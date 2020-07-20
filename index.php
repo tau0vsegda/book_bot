@@ -17,7 +17,7 @@
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
-      sendMessage($chat_id, "start of finding");
+   //   sendMessage($chat_id, "start of finding");
       $manga = $words[0];
 
     $curl = curl_init();
@@ -94,9 +94,9 @@
           }
         }
       }
-    } else {
+    }/* else {
       sendMessage($chat_id, $err);
-    }
+    }*/
   }
 
 ?>
