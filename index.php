@@ -37,8 +37,6 @@
 
     if (!$err) {
       $array = new SimpleXMLElement($response);
-    } else {
-      exit;
     }
 
     if (!$err) {
@@ -92,7 +90,8 @@
         }
       }
     } else {
-      sendMessage($chat_id, $err);
+      sendMessage($chat_id, "I not get response");
+      exit;
     }
   }
 
