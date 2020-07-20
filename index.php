@@ -15,9 +15,11 @@
   if ($message == '/start') {
     sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
+    sendMessage($chat_id, "I start to find the manga.");
 
-    if (preg_match("/^[ ]*$/")) {
+    if (preg_match("/^\ *$/")) {
       $words = explode(" ", $message);
+      sendMessage($chat_id, "create the array of words.");
       $manga = $words[0];
       for ($index = 1; $index <= array_key_last($words); $index++) {
         if (strlen($words[$index - 1]) < strlen($words[$index])) {
