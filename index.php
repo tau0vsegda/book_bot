@@ -109,7 +109,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
 
         }
       }
-    } elseif (preg_match("/^[\/0-9]*$/", $message)) {
+    }/* elseif (preg_match("/^[\/0-9]*$/", $message)) {
 
       $manga = ltrim($message, "/");
       sendMessage($chat_id, "I get you message");
@@ -164,16 +164,71 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             }
           }
         }
-//        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
       }
 
 
-    } else {
+    }*/ else {
       sendMessage($chat_id, "I not get response");
     }
   }
 if (preg_match("/^[\/0-9]*$/", $manga_id)) {
-  sendMessage($chat_id_in, $manga_id);
+  $manga = ltrim($message, "/");
+  sendMessage($chat_id_in, "I get you message");
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_CUSTOMREQUEST => "GET",
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+  $mes = array(
+    "Name" => "",
+    "AlternativeName" => "",
+    "Author" => "",
+    "Genres" => "",
+    "Summary" => "",
+    "Picture" => "",
+  );
+  if (!$err) {
+    foreach ($response["manga"] as $key => $value) {
+      if (($key == "info") && ($value["type"] == "Picture") && (is_object($response["manga"]))) {
+        foreach ($value as $key1 => $value1) {
+          $mes["Picture"] = $value1["src"];
+        }
+      } elseif (($key == "info") && ($value["type"] == "Picture")) {
+        $mes["Picture"] = $value["src"];
+      }
+      if (($key == "info") && ($value["type"] == "Main title")) {
+        $mes["Name"] = $value;
+      }
+      if (($key == "info") && ($value["type"] == "Alternative title")) {
+        $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
+      }
+      if (($key == "info") && ($value["type"] == "Genres")) {
+        $mes["Genres"] = $mes["Genres"] . $value . " ";
+      }
+      if (($key == "info") && ($value["type"] == "Plot Summary")) {
+        $mes["Summary"] = $value;
+      }
+      if ($key == "staff") {
+        foreach ($value as $key1 => $value1) {
+          if ($key1 == "person") {
+            $mes["Author"] = $value1;
+          }
+        }
+      }
+    }
+    sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+  }
+
 }
 
 ?>
