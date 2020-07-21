@@ -98,7 +98,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
           if ($censor) {
 
-            $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $id);
+            $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $value["id"]);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
