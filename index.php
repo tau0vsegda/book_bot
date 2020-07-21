@@ -69,6 +69,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
 
           if ($wordsConsist) {
+            $id = $value["id"];
 
             foreach ($value as $key1 => $value1) {
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
@@ -95,7 +96,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $keyboard = array("inline_keyboard" => $inline_keyboard);
             $replyMarkup = json_encode($keyboard);
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");*/
-            $inline_button = array("text"=>"Learn more","callback_data"=>$value['id']);
+            $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $id);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
