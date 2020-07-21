@@ -14,7 +14,7 @@
   $chat_id = $output['message']['chat']['id'];
   $first_name = $output['message']['chat']['first_name'];
   $message = $output['message']['text'];
-  $callback_query = $output['callback_query'];
+  //$callback_query = $output['callback_query'];
 
   if ($message == "/start") {
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help", "");
@@ -90,11 +90,17 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             }
           }
           if ($censor) {
-            $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
+/*            $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
             $inline_keyboard = [$inline_button];
             $keyboard = array("inline_keyboard" => $inline_keyboard);
             $replyMarkup = json_encode($keyboard);
-            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");
+            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");*/
+            $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
+            $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
+            $inline_keyboard = [[$inline_button1,$inline_button2]];
+            $keyboard=array("inline_keyboard"=>$inline_keyboard);
+            $replyMarkup = json_encode($keyboard);
+            sendMessage($chat_id, "ok", $replyMarkup);
           }
         }
       }
