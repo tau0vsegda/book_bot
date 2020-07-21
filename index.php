@@ -54,10 +54,8 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     if (!$err) {
       $array = new SimpleXMLElement($response);
 
-      if ($array == "") {sendMessage($chat_id, "пустой массив");}
 
       foreach ($array as $key => $value) {
-          sendMessage($chat_id, "i am here");
 
         if ($key == "warning") {
           sendMessage($chat_id, "Not found.");
@@ -80,25 +78,20 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
 
           if ($wordsConsist) {
-            sendMessage($chat_id, "i am here too");
 
             foreach ($value as $key1 => $value1) {
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
                 foreach ($value1 as $key2 => $value2) {
                   $mes["Picture"] = $value2["src"];
-                  sendMessage($chat_id, "picture");
                 }
               } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
                 $mes["Picture"] = $value1["src"];
-                sendMessage($chat_id, "picture");
               }
               if (($key1 == "info") && ($value1["type"] == "Main title")) {
                 $mes["Name"] = $value1;
-                sendMessage($chat_id, "name");
               }
               if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
                 $mes["Summary"] = $value1;
-                sendMessage($chat_id, "summary");
               }
               if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 == "erotica")) {
                 $censor = false;
@@ -111,7 +104,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
-            sendMessageWithInline($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
+            sendMessage/*WithInline*/($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]/*, $replyMarkup*/);
           }
 
 
