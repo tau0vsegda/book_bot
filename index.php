@@ -53,8 +53,6 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     if (!$err) {
       $array = new SimpleXMLElement($response);
 
-      if ($array == "") {sendMessage($chat_id_in, "пустой массив");}
-
       foreach ($array as $key => $value) {
 
         if ($key == "warning") {
@@ -204,6 +202,10 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   if (!$err) {
 
     $array = new SimpleXMLElement($response);
+
+    if ($array == "") {sendMessage($chat_id_in, "пустой массив");}
+
+
     foreach ($array as $ann => $array1) {
       foreach ($array1 as $teg => $array) {
         foreach ($array as $key => $value) {
