@@ -19,6 +19,7 @@
   $message = $output['message']['text'];
   $callback_query = $output['callback_query'];
   $manga_id = $callback_query['data'];
+  $chat_id_in = $callback_query['message']['chat']['id'];
 
 
 
@@ -127,7 +128,7 @@ if (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
       $response = curl_exec($curl);
       $err = curl_error($curl);*/
   $manga_id = ltrim($manga_id, "/");
-  sendMessage($chat_id, $manga_id, "");
+  sendMessage($chat_id_in, $manga_id);
 }
 
 exit;
