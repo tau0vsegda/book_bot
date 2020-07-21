@@ -95,12 +95,11 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $keyboard = array("inline_keyboard" => $inline_keyboard);
             $replyMarkup = json_encode($keyboard);
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");*/
-            $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
-            $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
-            $inline_keyboard = [[$inline_button1,$inline_button2]];
-            $keyboard=array("inline_keyboard"=>$inline_keyboard);
+            $inline_button = array("text"=>"work plz","callback_data"=>'/plz');
+            $inline_keyboard = [[$inline_button]];
+            $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
-            sendMessage($chat_id, "ok", $replyMarkup);
+            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
           }
         }
       }
