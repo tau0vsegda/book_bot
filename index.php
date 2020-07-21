@@ -96,7 +96,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $keyboard = array("inline_keyboard" => $inline_keyboard);
             $replyMarkup = json_encode($keyboard);
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");*/
-            $inline_button = array("text"=>"Learn more","callback_data"=>/*"/" . */$id);
+            $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $id);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
