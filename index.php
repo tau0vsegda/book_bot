@@ -54,7 +54,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     if (!$err) {
       $array = new SimpleXMLElement($response);
 
-      if ($array == "") {sendMessage($chat_id, "пустой массив");}
+      if ($array === "") {sendMessage($chat_id, "пустой массив");}
 
       foreach ($array as $key => $value) {
 
