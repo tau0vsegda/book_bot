@@ -17,10 +17,10 @@
   $callback_query = $output['callback_query'];
 
   if ($message == "/start") {
-    sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
+    sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help", "");
   } elseif ($message == "/help") {
       sendMessage($chat_id, "If you want to find a manga, just write its name (please try using English characters);\n
-If you do not receive a reply for a long time, do not worry, you will receive it anyway");
+If you do not receive a reply for a long time, do not worry, you will receive it anyway", "");
 
   } elseif (preg_match("/^[1-9A-Za-z ]*$/", $message)) {
 
@@ -49,7 +49,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       foreach ($array as $key => $value) {
 
         if ($key == "warning") {
-          sendMessage($chat_id, "Not found.");
+          sendMessage($chat_id, "Not found.", "");
         } else {
 
           $mes = array(
@@ -90,17 +90,16 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             }
           }
           if ($censor) {
-            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
             $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
             $inline_keyboard = [$inline_button];
             $keyboard = array("inline_keyboard" => $inline_keyboard);
             $replyMarkup = json_encode($keyboard);
-            sendMessage($chat_id, "\n", $replyMarkup);
+            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
           }
         }
       }
     } else {
-      sendMessage($chat_id, "I not get response");
+      sendMessage($chat_id, "I not get response", "");
     }
   }
 exit;
