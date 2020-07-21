@@ -100,15 +100,12 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
           if ($censor) {
 
-            $inline_button = array("text" => "", "add/change status of manga" => "/" . $value["id"]);
+            $inline_button = array("text" => "add/change status of manga", "callback_data" => "/" . $value["id"]);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
-            sendMessage/*WithInline*/($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]/*, $replyMarkup*/);
+            sendMessageWithInline($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
           }
-
-
-
         }
       }
     } else {
