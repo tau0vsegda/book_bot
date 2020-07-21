@@ -175,7 +175,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
   }
 if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   $manga = ltrim($message, "/");
-  sendMessage($chat_id_in, "I get you message");
+  sendMessage($chat_id_in, $manga_id);
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
@@ -190,6 +190,7 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   $err = curl_error($curl);
 
   curl_close($curl);
+
   $mes = array(
     "Name" => "",
     "AlternativeName" => "",
@@ -230,7 +231,7 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
         }
       }
     }
-    sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+ //   sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
   }
 
 }
