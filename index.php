@@ -203,7 +203,7 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   );
   if (!$err) {
 
-    $array1 = new SimpleXMLElement($response);
+    $array1 = SimpleXMLElement($response);
 
     if ($array1 == "") {sendMessage($chat_id_in, "пустой массив");}
 
