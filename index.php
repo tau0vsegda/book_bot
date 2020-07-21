@@ -78,7 +78,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
               break;
             }
           }
-
+            
           if ($wordsConsist) {
             sendMessage($chat_id, "i am here too");
 
