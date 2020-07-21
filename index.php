@@ -203,9 +203,9 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   );
   if (!$err) {
 
-    $array = new SimpleXMLElement($response);
+    $array1 = new SimpleXMLElement($response);
 
-    if ($array == "") {sendMessage($chat_id_in, "пустой массив");}
+    if ($array1 == "") {sendMessage($chat_id_in, "пустой массив");}
 
 
     foreach ($array as $ann => $array1) {
