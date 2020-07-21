@@ -52,12 +52,12 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     curl_close($curl);
 
     if (!$err) {
-     // $array = new SimpleXMLElement($response, false);
-      $array = simplexml_load_string($response);
+      $array = new SimpleXMLElement($response);
 
       if ($array == "") {sendMessage($chat_id, "пустой массив");}
 
       foreach ($array as $key => $value) {
+          sendMessage($chat_id, "i am here");
 
         if ($key == "warning") {
           sendMessage($chat_id, "Not found.");
