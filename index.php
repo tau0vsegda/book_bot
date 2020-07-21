@@ -32,7 +32,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
-   //   sendMessage($chat_id, "start of finding");
+      sendMessage($chat_id, "start of finding");
       $manga = "~" . $words[0];
 
     $curl = curl_init();
@@ -46,12 +46,15 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     ));
 
     $response = curl_exec($curl);
+    if (!$err) {echo $response;}
     $err = curl_error($curl);
 
     curl_close($curl);
 
     if (!$err) {
       $array = new SimpleXMLElement($response);
+
+      if ($array == "") {sendMessage($chat_id, "пустой массив");}
 
       foreach ($array as $key => $value) {
 
