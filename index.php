@@ -202,8 +202,8 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   if (!$err) {
 
     $array = new SimpleXMLElement($response);
-    $array = $array["manga"];
-    foreach ($array as $key => $value) {
+    $array1 = $array["manga"];
+    foreach ($array1 as $key => $value) {
       if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
         foreach ($value as $key1 => $value1) {
           $mes["Picture"] = $value1["src"];
@@ -231,7 +231,7 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
         }
       }
     }
-    sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+ //   sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
   }
 
 }
