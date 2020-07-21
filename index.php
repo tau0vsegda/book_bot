@@ -14,7 +14,8 @@
   $chat_id = $output['message']['chat']['id'];
   $first_name = $output['message']['chat']['first_name'];
   $message = $output['message']['text'];
-  //$callback_query = $output['callback_query'];
+  $callback_query = $output['callback_query'];
+  $manga_id = $callback_query['data'];
 
   if ($message == "/start") {
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help", "");
@@ -22,7 +23,7 @@
       sendMessage($chat_id, "If you want to find a manga, just write its name (please try using English characters);\n
 If you do not receive a reply for a long time, do not worry, you will receive it anyway", "");
 
-  } elseif (preg_match("/^[1-9A-Za-z ]*$/", $message)) {
+  } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
    //   sendMessage($chat_id, "start of finding");
@@ -91,22 +92,36 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             }
           }
           if ($censor) {
-/*            $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
-            $inline_keyboard = [$inline_button];
-            $keyboard = array("inline_keyboard" => $inline_keyboard);
-            $replyMarkup = json_encode($keyboard);
-            sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], "");*/
+
             $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $id);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
           }
+
+
+
         }
       }
     } else {
       sendMessage($chat_id, "I not get response", "");
     }
+  } elseif (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
+/*    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga_id,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_CUSTOMREQUEST => "GET",
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);*/
+    $manga_id = ltrim($manga_id, "/");
+    sendMessage($chat_id, $manga_id, "");
   }
 exit;
 ?>
