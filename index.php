@@ -32,7 +32,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
   } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
-      sendMessage($chat_id, "start of finding");
+      sendMessage($chat_id, "start of finding with name " . $message);
       $manga = "~" . $words[0];
 
     $curl = curl_init();
