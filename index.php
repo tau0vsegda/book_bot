@@ -34,7 +34,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       $words = explode(" ", $message);
       $manga = "~" . $words[0];
     //sendMessage($chat_id, "start of finding with name " . $message . ": first word is " . $manga);
-    sendMessage($chat_id, $manga . "first word");
+    sendMessage($chat_id, $manga . " first word");
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
