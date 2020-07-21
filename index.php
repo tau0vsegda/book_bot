@@ -202,8 +202,8 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   if (!$err) {
 
     $array = new SimpleXMLElement($response);
-    $array = $array["ann"];
-    $array = $array["manga"];
+    $array1 = $array["ann"];
+    $array = $array1["manga"];
     foreach ($array as $key => $value) {
       if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
         foreach ($value as $key1 => $value1) {
