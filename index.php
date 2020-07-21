@@ -15,8 +15,12 @@
   $first_name = $output['message']['chat']['first_name'];
   $message = $output['message']['text'];
 
-  if ($message == '/start') {
+  if ($message == "/start") {
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
+  } elseif ($message == "/help") {
+      sendMessage($chat_id, "If you want to find a manga, just write its name (please try using English characters);\n
+If you do not receive a reply for a long time, do not worry, you will receive it anyway");
+
   } elseif (preg_match("/^[1-9A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
@@ -26,7 +30,7 @@
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $someManga,
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $manga,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_TIMEOUT => 30,
