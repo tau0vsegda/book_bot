@@ -30,7 +30,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $manga,
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_TIMEOUT => 30,
@@ -44,14 +44,11 @@ If you do not receive a reply for a long time, do not worry, you will receive it
 
     if (!$err) {
       $array = new SimpleXMLElement($response);
-    }
-
-    if (!$err) {
 
       foreach ($array as $key => $value) {
 
         if ($key == "warning") {
-          sendMessage($chat_id, "Not found");
+          sendMessage($chat_id, "Not found.");
         } else {
 
           $mes = array(
