@@ -14,6 +14,7 @@
   $chat_id = $output['message']['chat']['id'];
   $first_name = $output['message']['chat']['first_name'];
   $message = $output['message']['text'];
+  $callback_query = $output['callback_query'];
 
   if ($message == "/start") {
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
@@ -90,6 +91,9 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
           if ($censor) {
             sendMessage($chat_id, $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"]);
+            $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
+            $inline_keyboard = [$inline_button];
+            $keyboard = array("inline_keyboard" => $inline_keyboard);
           }
         }
       }
