@@ -17,6 +17,23 @@
   $callback_query = $output['callback_query'];
   $manga_id = $callback_query['data'];
 
+if (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
+  /*    $curl = curl_init();
+
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga_id,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_CUSTOMREQUEST => "GET",
+      ));
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);*/
+  $manga_id = ltrim($manga_id, "/");
+  sendMessage($chat_id, $manga_id, "");
+}
+
   if ($message == "/start") {
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help", "");
   } elseif ($message == "/help") {
@@ -108,21 +125,6 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       sendMessage($chat_id, "I not get response", "");
     }
   }
-  if (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
-/*    $curl = curl_init();
 
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga_id,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_CUSTOMREQUEST => "GET",
-    ));
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);*/
-    $manga_id = ltrim($manga_id, "/");
-    sendMessage($chat_id, $manga_id, "");
-  }
 exit;
 ?>
