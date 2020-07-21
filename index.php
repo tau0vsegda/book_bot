@@ -174,7 +174,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     }
   }
 if (preg_match("/^[\/0-9]*$/", $manga_id)) {
-  $manga = ltrim($message, "/");
+  $manga = ltrim($manga_id, "/");
   sendMessage($chat_id_in, $manga . " - id of manga");
   $curl = curl_init();
 
