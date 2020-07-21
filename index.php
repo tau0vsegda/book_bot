@@ -1,5 +1,5 @@
 <?php
-/*
+
   function sendMessageWithInline($chat_id, $message, $replyMarkup) {
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
   }
@@ -76,7 +76,6 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
 
           if ($wordsConsist) {
-            $id = $value["id"];
 
             foreach ($value as $key1 => $value1) {
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
@@ -110,15 +109,13 @@ If you do not receive a reply for a long time, do not worry, you will receive it
 
         }
       }
-    } else {
-      sendMessage($chat_id, "I not get response");
-    }
-  }
-if (preg_match("/^[/0-9]*$/", $manga_id)) {
-  /*    $curl = curl_init();
+    } elseif (preg_match("/^[/0-9]*$/", $message)) {
+
+      $manga = ltrim($message, "/");
+      $curl = curl_init();
 
       curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga_id,
+        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 30,
@@ -126,44 +123,56 @@ if (preg_match("/^[/0-9]*$/", $manga_id)) {
       ));
 
       $response = curl_exec($curl);
-      $err = curl_error($curl);*/
-/*  $manga_id = ltrim($manga_id, "/");
+      $err = curl_error($curl);
+
+      curl_close($curl);
+      $mes = array(
+               "Name" => "",
+               "AlternativeName" => "",
+               "Author" => "",
+               "Genres" => "",
+               "Summary" => "",
+               "Picture" => "",
+      );
+      if (!$err) {
+        foreach ($response["manga"] as $key => $value) {
+          if (($key == "info") && ($value["type"] == "Picture") && (is_object($response["manga"]))) {
+            foreach ($value as $key1 => $value1) {
+              $mes["Picture"] = $value1["src"];
+            }
+          } elseif (($key == "info") && ($value["type"] == "Picture")) {
+            $mes["Picture"] = $value["src"];
+          }
+          if (($key == "info") && ($value["type"] == "Main title")) {
+            $mes["Name"] = $value;
+          }
+          if (($key == "info") && ($value["type"] == "Alternative title")) {
+            $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
+          }
+          if (($key == "info") && ($value["type"] == "Genres")) {
+            $mes["Genres"] = $mes["Genres"] . $value . " ";
+          }
+          if (($key == "info") && ($value["type"] == "Plot Summary")) {
+            $mes["Summary"] = $value;
+          }
+          if ($key == "staff") {
+            foreach ($value as $key1 => $value1) {
+              if ($key1 == "person") {
+                $mes["Author"] = $value1;
+              }
+            }
+          }
+        }
+        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+      }
+
+
+    } else {
+      sendMessage($chat_id, "I not get response");
+    }
+  }
+if (preg_match("/^[/0-9]*$/", $manga_id)) {
   sendMessage($chat_id_in, $manga_id);
-} */
-
-?>
-
-<?php
-$access_token = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
-$api = 'https://api.telegram.org/bot' . $access_token;
-$output = json_decode(file_get_contents('php://input'), TRUE);
-$chat_id = $output['message']['chat']['id'];
-$message = $output['message']['text'];
-$callback_query = $output['callback_query'];
-$data = $callback_query['data'];
-$message_id = ['callback_query']['message']['message_id'];
-$chat_id_in = $callback_query['message']['chat']['id'];
-
-if ($message == "plz") {
-    sendMessage($chat_id, $message, "");
 }
 
-switch($message) {
-  case '/test':
-    $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
-    $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
-    $inline_keyboard = [[$inline_button1,$inline_button2]];
-    $keyboard=array("inline_keyboard"=>$inline_keyboard);
-    $replyMarkup = json_encode($keyboard);
-    sendMessage($chat_id, "ok", $replyMarkup);
-    break;
-}
-switch($data){
-  case '/plz':
-    sendMessage($chat_id_in, "plz", "");
-    break;
-}
-function sendMessage($chat_id, $message, $replyMarkup) {
-  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
-}
 ?>
