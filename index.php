@@ -202,38 +202,39 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   if (!$err) {
 
     $array = new SimpleXMLElement($response);
-    $array1 = $array["ann"];
-    foreach ($array1 as $teg => $array) {
-      foreach ($array as $key => $value) {
-        if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
-          foreach ($value as $key1 => $value1) {
-            $mes["Picture"] = $value1["src"];
+    foreach ($array as $ann => $array1) {
+      foreach ($array1 as $teg => $array) {
+        foreach ($array as $key => $value) {
+          if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
+            foreach ($value as $key1 => $value1) {
+              $mes["Picture"] = $value1["src"];
+            }
+          } elseif (($key == "info") && ($value["type"] == "Picture")) {
+            $mes["Picture"] = $value["src"];
           }
-        } elseif (($key == "info") && ($value["type"] == "Picture")) {
-          $mes["Picture"] = $value["src"];
-        }
-        if (($key == "info") && ($value["type"] == "Main title")) {
-          $mes["Name"] = $value;
-        }
-        if (($key == "info") && ($value["type"] == "Alternative title")) {
-          $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
-        }
-        if (($key == "info") && ($value["type"] == "Genres")) {
-          $mes["Genres"] = $mes["Genres"] . $value . " ";
-        }
-        if (($key == "info") && ($value["type"] == "Plot Summary")) {
-          $mes["Summary"] = $value;
-        }
-        if ($key == "staff") {
-          foreach ($value as $key1 => $value1) {
-            if ($key1 == "person") {
-              $mes["Author"] = $value1;
+          if (($key == "info") && ($value["type"] == "Main title")) {
+            $mes["Name"] = $value;
+          }
+          if (($key == "info") && ($value["type"] == "Alternative title")) {
+            $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
+          }
+          if (($key == "info") && ($value["type"] == "Genres")) {
+            $mes["Genres"] = $mes["Genres"] . $value . " ";
+          }
+          if (($key == "info") && ($value["type"] == "Plot Summary")) {
+            $mes["Summary"] = $value;
+          }
+          if ($key == "staff") {
+            foreach ($value as $key1 => $value1) {
+              if ($key1 == "person") {
+                $mes["Author"] = $value1;
+              }
             }
           }
         }
       }
     }
- //   sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+    sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
   }
 
 }
