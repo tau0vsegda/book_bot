@@ -143,6 +143,11 @@ $callback_query = $output['callback_query'];
 $data = $callback_query['data'];
 $message_id = ['callback_query']['message']['message_id'];
 $chat_id_in = $callback_query['message']['chat']['id'];
+
+if ($message == "plz") {
+    sendMessage($chat_id, $message, "");
+}
+
 switch($message) {
   case '/test':
     $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
@@ -155,7 +160,7 @@ switch($message) {
 }
 switch($data){
   case '/plz':
-    sendMessage($chat_id_in, "plz");
+    sendMessage($chat_id_in, "plz", "");
     break;
 }
 function sendMessage($chat_id, $message, $replyMarkup) {
