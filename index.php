@@ -1,6 +1,6 @@
 <?php
 
-  function sendMessage($chat_id, $message) {
+  function sendMessage($chat_id, $message, $replyMarkup) {
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
   }
 
@@ -94,8 +94,8 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $inline_button = array("text" => "Learn more", "manga_id" => $value["id"]);
             $inline_keyboard = [$inline_button];
             $keyboard = array("inline_keyboard" => $inline_keyboard);
-            $replyMarkup1 = json_encode($keyboard);
-            sendMessage($chat_id, "\n", $replyMarkup1);
+            $replyMarkup = json_encode($keyboard);
+            sendMessage($chat_id, "\n", $replyMarkup);
           }
         }
       }
