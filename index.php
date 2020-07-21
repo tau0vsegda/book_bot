@@ -187,6 +187,8 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
   ));
 
   $response = curl_exec($curl);
+
+  if (!$err) {echo $response;}
   $err = curl_error($curl);
 
   curl_close($curl);
