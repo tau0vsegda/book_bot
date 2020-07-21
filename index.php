@@ -80,6 +80,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
 
           if ($wordsConsist) {
+            sendMessage($chat_id, "i am here too");
 
             foreach ($value as $key1 => $value1) {
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
