@@ -26,7 +26,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
 
       $words = explode(" ", $message);
    //   sendMessage($chat_id, "start of finding");
-      $manga = $words[0];
+      $manga = "~" . $words[0];
 
     $curl = curl_init();
 
@@ -99,8 +99,8 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       }
     } else {
       sendMessage($chat_id, "I not get response");
-      exit;
+
     }
   }
-
+exit;
 ?>
