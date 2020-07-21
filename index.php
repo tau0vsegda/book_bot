@@ -52,7 +52,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     curl_close($curl);
 
     if (!$err) {
-      $array = new SimpleXMLElement($response);
+      $array = new SimpleXMLElement($response, false);
 
       if ($array == "") {sendMessage($chat_id, "пустой массив");}
 
