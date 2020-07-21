@@ -131,5 +131,4 @@ if (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
   sendMessage($chat_id_in, $manga_id);
 }
 
-exit;
 ?>
