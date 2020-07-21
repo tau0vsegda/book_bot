@@ -46,8 +46,8 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     ));
 
     $response = curl_exec($curl);
-    if (!$err) {echo $response;}
     $err = curl_error($curl);
+    if (!$err) {echo $response;}
 
     curl_close($curl);
 
