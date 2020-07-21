@@ -1,4 +1,6 @@
 <?php
+  include('vendor/autoload.php');
+  use Telegram\Bot\Api;
 
   function sendMessage($chat_id, $message) {
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
