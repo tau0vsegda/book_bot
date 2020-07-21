@@ -1,5 +1,5 @@
 <?php
-
+/*
   function sendMessageWithInline($chat_id, $message, $replyMarkup) {
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
   }
@@ -127,8 +127,38 @@ if (preg_match("/^[/0-9]*$/", $manga_id)) {
 
       $response = curl_exec($curl);
       $err = curl_error($curl);*/
-  $manga_id = ltrim($manga_id, "/");
+/*  $manga_id = ltrim($manga_id, "/");
   sendMessage($chat_id_in, $manga_id);
-}
+} */
 
+?>
+
+<?php
+$access_token = 'xxx';
+$api = 'https://api.telegram.org/bot' . $access_token;
+$output = json_decode(file_get_contents('php://input'), TRUE);
+$chat_id = $output['message']['chat']['id'];
+$message = $output['message']['text'];
+$callback_query = $output['callback_query'];
+$data = $callback_query['data'];
+$message_id = ['callback_query']['message']['message_id'];
+$chat_id_in = $callback_query['message']['chat']['id'];
+switch($message) {
+  case '/test':
+    $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
+    $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
+    $inline_keyboard = [[$inline_button1,$inline_button2]];
+    $keyboard=array("inline_keyboard"=>$inline_keyboard);
+    $replyMarkup = json_encode($keyboard);
+    sendMessage($chat_id, "ok", $replyMarkup);
+    break;
+}
+switch($data){
+  case '/plz':
+    sendMessage($chat_id_in, "plz");
+    break;
+}
+function sendMessage($chat_id, $message, $replyMarkup) {
+  file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message) . '&reply_markup=' . $replyMarkup);
+}
 ?>
