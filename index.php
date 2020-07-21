@@ -78,7 +78,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
               break;
             }
           }
-            
+
           if ($wordsConsist) {
             sendMessage($chat_id, "i am here too");
 
@@ -86,15 +86,19 @@ If you do not receive a reply for a long time, do not worry, you will receive it
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
                 foreach ($value1 as $key2 => $value2) {
                   $mes["Picture"] = $value2["src"];
+                  sendMessage($chat_id, "picture");
                 }
               } elseif (($key1 == "info") && ($value1["type"] == "Picture")) {
                 $mes["Picture"] = $value1["src"];
+                sendMessage($chat_id, "picture");
               }
               if (($key1 == "info") && ($value1["type"] == "Main title")) {
                 $mes["Name"] = $value1;
+                sendMessage($chat_id, "name");
               }
               if (($key1 == "info") && ($value1["type"] == "Plot Summary")) {
                 $mes["Summary"] = $value1;
+                sendMessage($chat_id, "summary");
               }
               if (($key1 == "info") && ($value1["type"] == "Genres") && ($value1 == "erotica")) {
                 $censor = false;
