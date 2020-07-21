@@ -112,6 +112,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
     } elseif (preg_match("/^[/0-9]*$/", $message)) {
 
       $manga = ltrim($message, "/");
+      sendMessage($chat_id, "I get you message");
       $curl = curl_init();
 
       curl_setopt_array($curl, array(
@@ -163,7 +164,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             }
           }
         }
-        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
+//        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
       }
 
 
