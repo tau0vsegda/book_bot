@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bcf777f-55bb-4122-bbf8-e4b1c0fa8232" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +70,7 @@
       <updated>1594721711414</updated>
       <workItem from="1594721717074" duration="1305000" />
       <workItem from="1594797926697" duration="17620000" />
-      <workItem from="1594971111307" duration="96162000" />
+      <workItem from="1594971111307" duration="97008000" />
     </task>
     <servers />
   </component>
@@ -89,10 +90,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="278" y="0" key="#PHP" timestamp="1595193408954">
+    <state x="278" y="0" key="#PHP" timestamp="1595323298685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="278" y="0" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1595193408954" />
+    <state x="278" y="0" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1595323298685" />
     <state x="718" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595319433709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

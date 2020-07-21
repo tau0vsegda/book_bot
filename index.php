@@ -4,7 +4,8 @@
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
   }
 
-  
+
+
 
   $access_token = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
   $api = 'https://api.telegram.org/bot' . $access_token;
@@ -14,11 +15,9 @@
   $first_name = $output['message']['chat']['first_name'];
   $message = $output['message']['text'];
 
-$keyboard = [["Последние статьи"],["Картинка"],["Гифка"]];
-
   if ($message == '/start') {
-    sendMessage($chat_id, 'You are welcome, ' . $first_name . '!');
-  } elseif (preg_match("/^[A-Za-z ]*$/", $message)) {
+    sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
+  } elseif (preg_match("/^[1-9A-Za-z ]*$/", $message)) {
 
       $words = explode(" ", $message);
    //   sendMessage($chat_id, "start of finding");
@@ -27,7 +26,7 @@ $keyboard = [["Последние статьи"],["Картинка"],["Гифк
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $manga,
+      CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $someManga,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_TIMEOUT => 30,
