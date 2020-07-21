@@ -114,7 +114,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       sendMessage($chat_id, "I not get response");
     }
   }
-if (preg_match("/\/(^[0-9]*$)/", $manga_id)) {
+if (preg_match("/^[/0-9]*$/", $manga_id)) {
   /*    $curl = curl_init();
 
       curl_setopt_array($curl, array(
