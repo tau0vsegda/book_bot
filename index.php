@@ -208,8 +208,8 @@ if (preg_match("/^[\/0-9]*$/", $manga_id)) {
     if ($array1 == "") {sendMessage($chat_id_in, "пустой массив");}
 
 
-    foreach ($array as $ann => $array1) {
-      foreach ($array1 as $teg => $array) {
+    foreach ($array1 as $ann => $array2) {
+      foreach ($array2 as $teg => $array) {
         foreach ($array as $key => $value) {
           if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
             foreach ($value as $key1 => $value1) {
