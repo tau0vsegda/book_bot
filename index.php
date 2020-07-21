@@ -98,7 +98,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
           if ($censor) {
 
-            $inline_button = array("text"=>"Learn more","callback_data"=>"/" . $value["id"]);
+            $inline_button = array("text" => "", "add/change status of manga" => "/" . $value["id"]);
             $inline_keyboard = [[$inline_button]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
@@ -109,140 +109,13 @@ If you do not receive a reply for a long time, do not worry, you will receive it
 
         }
       }
-    }/* elseif (preg_match("/^[\/0-9]*$/", $message)) {
-
-      $manga = ltrim($message, "/");
-      sendMessage($chat_id, "I get you message");
-      $curl = curl_init();
-
-      curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . $manga,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_CUSTOMREQUEST => "GET",
-      ));
-
-      $response = curl_exec($curl);
-      $err = curl_error($curl);
-
-      curl_close($curl);
-      $mes = array(
-               "Name" => "",
-               "AlternativeName" => "",
-               "Author" => "",
-               "Genres" => "",
-               "Summary" => "",
-               "Picture" => "",
-      );
-      if (!$err) {
-        foreach ($response["manga"] as $key => $value) {
-          if (($key == "info") && ($value["type"] == "Picture") && (is_object($response["manga"]))) {
-            foreach ($value as $key1 => $value1) {
-              $mes["Picture"] = $value1["src"];
-            }
-          } elseif (($key == "info") && ($value["type"] == "Picture")) {
-            $mes["Picture"] = $value["src"];
-          }
-          if (($key == "info") && ($value["type"] == "Main title")) {
-            $mes["Name"] = $value;
-          }
-          if (($key == "info") && ($value["type"] == "Alternative title")) {
-            $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
-          }
-          if (($key == "info") && ($value["type"] == "Genres")) {
-            $mes["Genres"] = $mes["Genres"] . $value . " ";
-          }
-          if (($key == "info") && ($value["type"] == "Plot Summary")) {
-            $mes["Summary"] = $value;
-          }
-          if ($key == "staff") {
-            foreach ($value as $key1 => $value1) {
-              if ($key1 == "person") {
-                $mes["Author"] = $value1;
-              }
-            }
-          }
-        }
-        sendMessage($chat_id, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
-      }
-
-
-    }*/ else {
+    } else {
       sendMessage($chat_id, "I not get response");
 
     }
   }
 if (preg_match("/^[\/0-9]*$/", $manga_id)) {
-  $manga = ltrim($manga_id, "/");
-  sendMessage($chat_id_in, $manga . " - id of manga");
-  $curl = curl_init();
-
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=" . "15584",//$manga,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_CUSTOMREQUEST => "GET",
-  ));
-
-  $response = curl_exec($curl);
-
-  //if (!$err) {echo $response;}
-  $err = curl_error($curl);
-
-  curl_close($curl);
-
-  $mes = array(
-    "Name" => "",
-    "AlternativeName" => "",
-    "Author" => "",
-    "Genres" => "",
-    "Summary" => "",
-    "Picture" => "",
-  );
-  if (!$err) {
-
-    $array1 =  new SimpleXMLElement($response);
-
-    if ($array1 == "") {sendMessage($chat_id_in, "пустой массив");}
-
-
-    foreach ($array1 as $ann => $array2) {
-
-      foreach ($array2 as $teg => $array) {
-        foreach ($array as $key => $value) {
-          if (($key == "info") && ($value["type"] == "Picture") && (is_object($array["manga"]))) {
-            foreach ($value as $key1 => $value1) {
-              $mes["Picture"] = $value1["src"];
-            }
-          } elseif (($key == "info") && ($value["type"] == "Picture")) {
-            $mes["Picture"] = $value["src"];
-          }
-          if (($key == "info") && ($value["type"] == "Main title")) {
-            $mes["Name"] = $value;
-          }
-          if (($key == "info") && ($value["type"] == "Alternative title")) {
-            $mes["AlternativeName"] = $mes["AlternativeName"] . $value . " ";
-          }
-          if (($key == "info") && ($value["type"] == "Genres")) {
-            $mes["Genres"] = $mes["Genres"] . $value . " ";
-          }
-          if (($key == "info") && ($value["type"] == "Plot Summary")) {
-            $mes["Summary"] = $value;
-          }
-          if ($key == "staff") {
-            foreach ($value as $key1 => $value1) {
-              if ($key1 == "person") {
-                $mes["Author"] = $value1;
-              }
-            }
-          }
-        }
-      }
-    }
-    sendMessage($chat_id_in, "Name:\n" . $mes["Name"] . "\n\n" . "Alternative name:\n" . $mes["AlternativeName"] . "\n\n" . "Author:\n" . $mes["Author"] . "\n\n" . "Genres:\n" . $mes["Genres"] . "\n\n" . "Summary:\n" . $mes["Summary"] . "\n\n");
-  }
+  sendMessage($chat_id_in, "когда я буду доработан, я обязательно изменю статус манги");
 
 }
 

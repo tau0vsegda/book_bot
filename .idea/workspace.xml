@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bcf777f-55bb-4122-bbf8-e4b1c0fa8232" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +70,7 @@
       <updated>1594721711414</updated>
       <workItem from="1594721717074" duration="1305000" />
       <workItem from="1594797926697" duration="17620000" />
-      <workItem from="1594971111307" duration="128910000" />
+      <workItem from="1594971111307" duration="130030000" />
     </task>
     <servers />
   </component>
@@ -101,14 +102,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594799392546" />
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1595363406151">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595363406151" />
     <state x="1164" y="351" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595225376997">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1164" y="351" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595225376997" />
-    <state x="938" y="239" key="run.anything.popup" timestamp="1595260404803">
+    <state x="938" y="239" key="run.anything.popup" timestamp="1595363406155">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="938" y="239" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595260404803" />
+    <state x="938" y="239" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595363406155" />
     <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1595354738332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
