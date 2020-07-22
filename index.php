@@ -107,7 +107,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
             $inline_button_already = array("text" => "Already read", "callback_data" => "/"/* . $value["name"]*/ . "already");
             $inline_button_quit = array("text" => "Quit reading", "callback_data" => "/"/* . $value["name"]*/ . "quit");
             $inline_button_likely = array("text" => "Likely manga", "callback_data" => "/"/* . $value["name"]*/ . "likely");
-            $inline_keyboard = [[[$inline_button_want] [$inline_button_now] [$inline_button_already] [$inline_button_quit] [$inline_button_likely]]];
+            $inline_keyboard = [[[$inline_button_want], [$inline_button_now], [$inline_button_already], [$inline_button_quit], [$inline_button_likely]]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
             sendMessageWithInline($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
