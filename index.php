@@ -184,7 +184,7 @@ elseif (preg_match("/likely/", $inline_message))
     if (!empty($databases_manga))
     {
         $manga = $databases_manga[0]["id"];
-        $command = "UPDATE manga SET likely = '1' WHERE manga = '{$manga}'";
+        $command = "UPDATE manga SET likely = '1' WHERE id = '{$manga}'";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "You add manga in likely.");
     }
