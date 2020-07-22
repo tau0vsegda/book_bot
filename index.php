@@ -33,7 +33,7 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
 {
-    $stm = databaseConnection()->query("SELECT * FROM users");
+ //   $stm = databaseConnection()->query("SELECT * FROM users");
 //    $databases = $stm->fetchAll();
 //    $consist = false;
 /*    foreach ($databases as $value)
@@ -47,7 +47,7 @@ if ($message == "/start")
  //   if (!$consist)
    // {
    //     $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'"; //(name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
-        $stm = databaseConnection()->query("INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'");
+ //       $stm = databaseConnection()->query("INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'");
   //  }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
 }
