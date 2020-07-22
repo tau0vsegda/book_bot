@@ -37,9 +37,9 @@ if ($message == "/start")
     $stm = databaseConnection()->query("SELECT * FROM users");
     $databases = $stm->fetchAll();
     $consist = false;
-    foreach ($databases as $value)
+    foreach ($databases as  $value)
     {
-        if ($value == $chat_id)
+        if ($value === $chat_id)
         {
             $consist = true;
             break;
