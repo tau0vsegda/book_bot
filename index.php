@@ -39,15 +39,16 @@ if ($message == "/start")
     $consist = false;
     foreach ($databases as  $value)
     {
-        if ($value === $chat_id)
+        if ($value == $chat_id)
         {
             $consist = true;
+            sendMessage($chat_id, "ты уже есть в базе данных");
             break;
         }
     }
     if (!$consist)
     {
-        $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'"; //(name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
+        $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
         $stm = databaseConnection()->query($command);
     }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
