@@ -39,12 +39,14 @@ if ($message == "/start")
     $consist = false;
     foreach ($databases as  $value)
     {
-        sendMessage($chat_id, "" . $value);
-        if ($value == $chat_id)
+        foreach ($value as $value1)
         {
-            $consist = true;
-            sendMessage($chat_id, "ты уже есть в базе данных");
-            break;
+            if ($value == $chat_id)
+            {
+                $consist = true;
+                sendMessage($chat_id, "ты уже есть в базе данных");
+                break;
+            }
         }
     }
     if (!$consist)
