@@ -158,12 +158,13 @@ if (preg_match("/want|now|already|quit/", $inline_message))
     {
         $command = "INSERT INTO manga set manga_id = '{$manga_id}', status = '{$manga_status}', likely = '0', user_id = '{$stm_users}'";
         $stm_manga = databaseConnection()->query($command);
+        sendMessage($chat_id_in, "add");
     }
     else
     {
         $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga_id = '{$manga_id}' AND user_id = '{$stm_users}'";
         $stm_manga = databaseConnection()->query($command);
-
+        sendMessage($chat_id_in, "change");
     }
 
 
