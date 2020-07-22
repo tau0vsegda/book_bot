@@ -46,7 +46,7 @@ if ($message == "/start")
     }*/
  //   if (!$consist)
    // {
-        $command = "INSERT INTO users (name, chat_id) VALUES ('" . $first_name . "', '" . $chat_id . "')";
+        $command = "INSERT INTO users (name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
         $stm = databaseConnection()->query($command);
   //  }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
