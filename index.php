@@ -39,7 +39,7 @@ if ($message == "/start")
     $consist = false;
     foreach ($databases as  $value)
     {
-        sendMessage($chat_id, "веду розыск");
+        sendMessage($chat_id, "" . $value);
         if ($value == $chat_id)
         {
             $consist = true;
