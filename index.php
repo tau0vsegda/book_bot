@@ -6,8 +6,8 @@ function databaseConnection(): PDO
     if ($connection === null)
     {
         $connection = new PDO(DB_DSN, DB_USER, DB_PASSWORD);
-        return $connection;
     }
+    return $connection;
 }
 function sendMessageWithInline($chat_id, $message, $replyMarkup)
 {
