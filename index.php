@@ -41,8 +41,8 @@ if ($message == "/start")
     {
         foreach ($value as $value1)
         {
-            sendMessage($chat_id, "" . $value1);
-            if ((string) $value === (string) $chat_id)
+
+            if ((string) $value == (string) $chat_id)
             {
                 $consist = true;
                 sendMessage($chat_id, "ты уже есть в базе данных");
