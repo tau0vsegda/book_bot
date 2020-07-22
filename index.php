@@ -128,7 +128,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                 }
                 if ($censor)
                 {
-                    $inline_button_want = array("text" => "Want to read", "callback_data" => "/" . $value["id"] . "_want");
+                    $inline_button_want = array("text" => "Want to read", "callback_data" => /*"/" . */$value["id"] . "_want");
                     $inline_button_now = array("text" => "Reading now", "callback_data" => "/"/* . $value["name"]*/ . "now");
                     $inline_button_already = array("text" => "Already read", "callback_data" => "/"/* . $value["name"]*/ . "already");
                     $inline_button_quit = array("text" => "Quit reading", "callback_data" => "/"/* . $value["name"]*/ . "quit");
@@ -136,7 +136,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                     $inline_keyboard = [[$inline_button_want, $inline_button_now, $inline_button_already, $inline_button_quit, $inline_button_likely]];
                     $keyboard = array("inline_keyboard" => $inline_keyboard);
                     $replyMarkup = json_encode($keyboard);
-                    sendMessageWithInline($chat_id, "hi{$mes["Name"]}\n\n{$mes["Summary"]}\n\n{$mes["Picture"]}", $replyMarkup);
+                    sendMessageWithInline($chat_id, "{$mes["Name"]}\n\n{$mes["Summary"]}\n\n{$mes["Picture"]}", $replyMarkup);
                 }
             }
         }
