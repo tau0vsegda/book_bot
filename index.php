@@ -41,6 +41,7 @@ if ($message == "/start")
     {
         foreach ($value as $value1)
         {
+            sendMessage($chat_id, "" . $value1);
             if ($value == $chat_id)
             {
                 $consist = true;
