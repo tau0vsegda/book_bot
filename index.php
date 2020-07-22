@@ -78,8 +78,10 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
 
           if ($wordsConsist) {
+            sendMessage($chat_id, "here");
 
             foreach ($value as $key1 => $value1) {
+              sendMessage($chat_id, "and here");
               if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1))) {
                 foreach ($value1 as $key2 => $value2) {
                   $mes["Picture"] = $value2["src"];
