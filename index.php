@@ -154,18 +154,18 @@ if (preg_match("/want|now|already|quit/", $inline_message))
     $stm_users = databaseConnection()->query("SELECT id FROM users WHERE chat_id = '{$chat_id_in}'");
     $databases_users = $stm_users->fetchAll();
     $user = $databases_users['id'];
-    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = {$manga_id} AND user_id = {$user}");
+    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = '{$manga_id}' AND user_id = '{$user}'");
     $databases_manga = $stm_manga->fetchAll();
     if (empty($databases_manga))
     {
-        $command = "INSERT INTO manga set manga_id = {$manga_id}, status = '{$manga_status}', likely = '0', user_id = {$user}";
+        $command = "INSERT INTO manga set manga_id = '{$manga_id}', status = '{$manga_status}', likely = '0', user_id = '{$user}'";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "add");
     }
     else
     {
         $manga = $databases_manga['id'];
-        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga = {$manga}";
+        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga = '{$manga}'";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "change");
     }
