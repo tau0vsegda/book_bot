@@ -17,7 +17,7 @@ function sendMessage($chat_id, $message)
     file_get_contents($GLOBALS['api'] . '/sendMessage?chat_id=' . $chat_id . '&text=' . urlencode($message));
 }
 
-const DB_DSN = "eu-cdbr-west-03.cleardb.net;dbname=heroku_8869f6e7e3f5fac";
+const DB_DSN = "mysql:host=eu-cdbr-west-03.cleardb.net;dbname=heroku_8869f6e7e3f5fac";
 const DB_USER = "b01c10efa93d3a";
 const DB_PASSWORD = "363d0b63";
 
@@ -33,22 +33,22 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
 {
- //   $stm = databaseConnection()->query("SELECT * FROM users");
-//    $databases = $stm->fetchAll();
-//    $consist = false;
-/*    foreach ($databases as $value)
+    $stm = databaseConnection()->query("SELECT * FROM users");
+    $databases = $stm->fetchAll();
+    $consist = false;
+    foreach ($databases as $value)
     {
         if ($value == $chat_id)
         {
             $consist = true;
             break;
         }
-    }*/
- //   if (!$consist)
-   // {
-   //     $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'"; //(name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
- //       $stm = databaseConnection()->query("INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'");
-  //  }
+    }
+    if (!$consist)
+    {
+        $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'"; //(name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
+        $stm = databaseConnection()->query($command);
+    }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
 }
 elseif ($message == "/help")
