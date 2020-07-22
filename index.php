@@ -34,21 +34,21 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 if ($message == "/start")
 {
     $stm = databaseConnection()->query("SELECT * FROM users");
-    $databases = $stm->fetchAll();
-    $consist = false;
-    foreach ($databases as $value)
+//    $databases = $stm->fetchAll();
+//    $consist = false;
+/*    foreach ($databases as $value)
     {
         if ($value == $chat_id)
         {
             $consist = true;
             break;
         }
-    }
-    if (!$consist)
-    {
+    }*/
+ //   if (!$consist)
+   // {
         $command = "INSERT INTO users (name, chat_id) VALUES ('" . $first_name . "', '" . $chat_id . "')";
         $stm = databaseConnection()->query($command);
-    }
+  //  }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
 }
 elseif ($message == "/help")
