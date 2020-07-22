@@ -58,7 +58,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~{$manga}",
+        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~" . $manga,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 30,
