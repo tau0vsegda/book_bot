@@ -128,11 +128,11 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                 }
                 if ($censor)
                 {
-                    $inline_button_want = array("text" => "Want to read", "callback_data" => /*"/" . */$value["id"] . "_want");
-                    $inline_button_now = array("text" => "Reading now", "callback_data" => "/"/* . $value["name"]*/ . "now");
-                    $inline_button_already = array("text" => "Already read", "callback_data" => "/"/* . $value["name"]*/ . "already");
-                    $inline_button_quit = array("text" => "Quit reading", "callback_data" => "/"/* . $value["name"]*/ . "quit");
-                    $inline_button_likely = array("text" => "Likely manga", "callback_data" => "/"/* . $value["name"]*/ . "likely");
+                    $inline_button_want = array("text" => "Want to read", "callback_data" => $value["id"] . "_want");
+                    $inline_button_now = array("text" => "Reading now", "callback_data" => $value["id"] . "_now");
+                    $inline_button_already = array("text" => "Already read", "callback_data" => $value["name"] . "_already");
+                    $inline_button_quit = array("text" => "Quit reading", "callback_data" => $value["name"] . "_quit");
+                    $inline_button_likely = array("text" => "Likely manga", "callback_data" => $value["name"] . "_likely");
                     $inline_keyboard = [[$inline_button_want, $inline_button_now, $inline_button_already, $inline_button_quit, $inline_button_likely]];
                     $keyboard = array("inline_keyboard" => $inline_keyboard);
                     $replyMarkup = json_encode($keyboard);
@@ -146,9 +146,9 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
         sendMessage($chat_id, "I not get response");
     }
 }
-if (preg_match("/^[\/\&A-Za-z ]*$/", $manga_id))
+if (preg_match("/^[\/\&0-9A-Za-z_]*$/", $manga_id))
 {
-    sendMessage($chat_id_in, "когда я буду доработан, я обязательно изменю статус манги");
+    sendMessage($chat_id_in, $manga_id);
 }
 
 ?>
