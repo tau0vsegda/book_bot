@@ -34,7 +34,7 @@ If you do not receive a reply for a long time, do not worry, you will receive it
       $words = explode(" ", $message);
       $manga = "~" . $words[0];
     //sendMessage($chat_id, "start of finding with name " . $message . ": first word is " . $manga);
-    sendMessage($chat_id, $manga . " first word");
+    //sendMessage($chat_id, $manga . " first word");
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
@@ -102,11 +102,11 @@ If you do not receive a reply for a long time, do not worry, you will receive it
           }
           if ($censor) {
 
-            $inline_button_want = array("text" => "Want to read", "callback_data" => "/" . $value["name"] . "&want");
-            $inline_button_now = array("text" => "Reading now", "callback_data" => "/" . $value["name"] . "&now");
-            $inline_button_already = array("text" => "Already read", "callback_data" => "/" . $value["name"] . "&already");
-            $inline_button_quit = array("text" => "Quit reading", "callback_data" => "/" . $value["name"] . "&quit");
-            $inline_button_likely = array("text" => "Likely manga", "callback_data" => "/" . $value["name"] . "&likely");
+            $inline_button_want = array("text" => "Want to read", "callback_data" => "/"/* . $value["name"]*/ . "&want");
+            $inline_button_now = array("text" => "Reading now", "callback_data" => "/"/* . $value["name"]*/ . "&now");
+            $inline_button_already = array("text" => "Already read", "callback_data" => "/"/* . $value["name"]*/ . "&already");
+            $inline_button_quit = array("text" => "Quit reading", "callback_data" => "/"/* . $value["name"]*/ . "&quit");
+            $inline_button_likely = array("text" => "Likely manga", "callback_data" => "/"/* . $value["name"]*/ . "&likely");
             $inline_keyboard = [[$inline_button_want, $inline_button_now, $inline_button_already, $inline_button_quit, $inline_button_likely]];
             $keyboard = array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard);
