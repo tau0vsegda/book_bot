@@ -165,7 +165,7 @@ if (preg_match("/want|now|already|quit/", $inline_message))
     else
     {
         $manga = $databases_manga[0]["id"];
-        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga = '{$manga}'";
+        $command = "UPDATE manga SET status = '{$manga_status}' WHERE id = '{$manga}'";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "You change status on \"{$manga_status}\".");
     }
