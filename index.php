@@ -29,7 +29,7 @@ $chat_id = $output['message']['chat']['id'];
 $first_name = $output['message']['chat']['first_name'];
 $message = $output['message']['text'];
 $callback_query = $output['callback_query'];
-$manga_id = $callback_query['data'];
+$inline_message = $callback_query['data'];
 $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
@@ -146,9 +146,27 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
         sendMessage($chat_id, "I not get response");
     }
 }
-if (preg_match("/^[\/\&0-9A-Za-z_]*$/", $manga_id))
+if (preg_match("/want|now|already|quit/", $inline_message))
 {
-    sendMessage($chat_id_in, $manga_id);
+    $manga_id_status = explode("_", $inline_message);
+    $manga_id = $manga_id_status[0];
+    $manga_status = $manga_id_status[1];
+    $stm_users = databaseConnection()->query("SELECT id FROM users WHERE chat_id = '{$chat_id_in}'");
+    $databases_users = $stm_users->fetchAll();
+    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = '{$manga_id}'");
+    if (empty($stm_manga))
+    {
+        $command = "INSERT INTO manga set manga_id = '{$manga_id}', status = '{$manga_status}', likely = '0', user_id = '{$stm_users}'";
+        $stm_manga = databaseConnection()->query($command);
+    }
+    else
+    {
+        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga_id = '{$manga_id}' AND user_id = '{$stm_users}'";
+        $stm_manga = databaseConnection()->query($command);
+
+    }
+
+
 }
 
 ?>
