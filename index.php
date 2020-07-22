@@ -40,9 +40,12 @@ if ($message == "/start")
     {
         $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
         $stm = databaseConnection()->query($command);
+        sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
     }
-    else {sendMessage($chat_id, "я тебя уже видел");}
-    sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
+    else
+    {
+        sendMessage($chat_id, "Why do write \"/start\"? If you need a help write /help.");
+    }
 }
 elseif ($message == "/help")
 {
@@ -55,7 +58,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~noragami",// . $manga,
+        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~{$manga}",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 30,
@@ -87,7 +90,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                 $wordsConsist = true;
                 foreach ($words as $word)
                 {
-                    if (!preg_match("/" . $word . "/i", $value["name"]))
+                    if (!preg_match("/{$word}/i", $value["name"]))
                     {
                         $wordsConsist = false;
                         break;
@@ -133,7 +136,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                     $inline_keyboard = [[$inline_button_want, $inline_button_now, $inline_button_already, $inline_button_quit, $inline_button_likely]];
                     $keyboard = array("inline_keyboard" => $inline_keyboard);
                     $replyMarkup = json_encode($keyboard);
-                    sendMessageWithInline($chat_id, "hi" . $mes["Name"] . "\n\n" . $mes["Summary"] . "\n\n" . $mes["Picture"], $replyMarkup);
+                    sendMessageWithInline($chat_id, "hi{$mes["Name"]}\n\n{$mes["Summary"]}\n\n{$mes["Picture"]}", $replyMarkup);
                 }
             }
         }
