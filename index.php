@@ -34,11 +34,11 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
 {
-    $stm = databaseConnection()->query("SELECT chat_id FROM users WHERE chat_id = '{$chat_id}'");
+    $stm = databaseConnection()->query("SELECT chat_id FROM users WHERE chat_id = {$chat_id}");
     $databases = $stm->fetchAll();
     if (empty($databases))
     {
-        $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
+        $command = "INSERT INTO users set name = '{$first_name}', chat_id = {$chat_id}";
         $stm = databaseConnection()->query($command);
         sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
     }
@@ -153,16 +153,16 @@ if (preg_match("/want|now|already|quit/", $inline_message))
     $manga_status = $manga_id_status[1];
     $stm_users = databaseConnection()->query("SELECT id FROM users WHERE chat_id = '{$chat_id_in}'");
     $databases_users = $stm_users->fetchAll();
-    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = '{$manga_id}'");
+    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = {$manga_id}");
     if (empty($stm_manga))
     {
-        $command = "INSERT INTO manga set manga_id = '{$manga_id}', status = '{$manga_status}', likely = '0', user_id = '{$stm_users}'";
+        $command = "INSERT INTO manga set manga_id = {$manga_id}, status = '{$manga_status}', likely = '0', user_id = {$stm_users}";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "add");
     }
     else
     {
-        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga_id = '{$manga_id}' AND user_id = '{$stm_users}'";
+        $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga_id = {$manga_id} AND user_id = {$stm_users}";
         $stm_manga = databaseConnection()->query($command);
         sendMessage($chat_id_in, "change");
     }
