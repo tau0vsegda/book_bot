@@ -34,27 +34,14 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
 {
-    $stm = databaseConnection()->query("SELECT * FROM users");
+    $stm = databaseConnection()->query("SELECT chat_id FROM users WHERE chat_id = '{$chat_id}'");
     $databases = $stm->fetchAll();
-    $consist = false;
-    foreach ($databases as  $value)
-    {
-        foreach ($value as $value1)
-        {
-
-            if ((string) $value == (string) $chat_id)
-            {
-                $consist = true;
-                sendMessage($chat_id, "ты уже есть в базе данных");
-                break;
-            }
-        }
-    }
-    if (!$consist)
+    if (empty($databases))
     {
         $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
         $stm = databaseConnection()->query($command);
     }
+    else {sendMessage($chat_id, "я тебя уже видел");}
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
 }
 elseif ($message == "/help")
