@@ -44,7 +44,7 @@ if ($message == "/start")
     }
     else
     {
-        sendMessage($chat_id, "Why do write \"/start\"? If you need a help write /help.");
+        sendMessage($chat_id, "Why do you write /start? Maybe you need a help? If yes write /help.");
     }
 }
 elseif ($message == "/help")
@@ -160,17 +160,38 @@ if (preg_match("/want|now|already|quit/", $inline_message))
     {
         $command = "INSERT INTO manga set manga_id = '{$manga_id}', status = '{$manga_status}', likely = '0', user_id = '{$user}'";
         $stm_manga = databaseConnection()->query($command);
-        sendMessage($chat_id_in, "add");
+        sendMessage($chat_id_in, "You add status \"{$manga_status}\".");
     }
     else
     {
         $manga = $databases_manga[0]["id"];
         $command = "UPDATE manga SET status = '{$manga_status}' WHERE manga = '{$manga}'";
         $stm_manga = databaseConnection()->query($command);
-        sendMessage($chat_id_in, "change");
+        sendMessage($chat_id_in, "You change status on \"{$manga_status}\".");
     }
 
 
+}
+elseif (preg_match("/likely/", $inline_message))
+{
+    $manga_id_likely = explode("_", $inline_message);
+    $manga_id = $manga_id_likely[0];
+    $stm_users = databaseConnection()->query("SELECT id FROM users WHERE chat_id = '{$chat_id_in}'");
+    $databases_users = $stm_users->fetchAll();
+    $user = $databases_users[0]["id"];
+    $stm_manga = databaseConnection()->query("SELECT id FROM manga WHERE manga_id = '{$manga_id}' AND user_id = '{$user}'");
+    $databases_manga = $stm_manga->fetchAll();
+    if (!empty($databases_manga))
+    {
+        $manga = $databases_manga[0]["id"];
+        $command = "UPDATE manga SET likely = '1' WHERE manga = '{$manga}'";
+        $stm_manga = databaseConnection()->query($command);
+        sendMessage($chat_id_in, "You add manga in likely.");
+    }
+    else
+    {
+        sendMessage($chat_id_in, "You don't add status of manga, so you can't add manga in likely.");
+    }
 }
 
 ?>
