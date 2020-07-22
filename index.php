@@ -46,8 +46,8 @@ if ($message == "/start")
     }*/
  //   if (!$consist)
    // {
-        $command = "INSERT INTO users (name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
-        $stm = databaseConnection()->query($command);
+   //     $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'"; //(name, chat_id) VALUES ('{$first_name}', '{$chat_id}')";
+        $stm = databaseConnection()->query("INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'");
   //  }
     sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
 }
