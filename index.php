@@ -34,11 +34,12 @@ $chat_id_in = $callback_query['message']['chat']['id'];
 
 if ($message == "/start")
 {
-    $stm = databaseConnection()->query("SELECT chat_id FROM users WHERE chat_id = {$chat_id}");
+    $stm = databaseConnection()->query("SELECT chat_id FROM users WHERE chat_id = '{$chat_id}'");
     $databases = $stm->fetchAll();
     if (empty($databases))
     {
-        $command = "INSERT INTO users set name = '{$first_name}', chat_id = {$chat_id}";
+
+        $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
         $stm = databaseConnection()->query($command);
         sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
     }
@@ -53,6 +54,7 @@ elseif ($message == "/help")
 }
 elseif ($message == "/statistic")
 {
+    sendMessage($chat_id,"в статистике");
     $stm = databaseConnection()->query("SELECT id FROM users");
     $all_users = $stm->fetchAll();
     $message = "";
@@ -63,9 +65,11 @@ elseif ($message == "/statistic")
     $all_manga = $stm->fetchAll();
     if (!empty($all_manga))
     {
+        sendMessage($chat_id, "не пустой массив");
         foreach ($all_manga as $manga)
         {
             $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: ";
+            sendMessage($chat_id, $message);
             if ($manga["likely"] === 1)
             {
                 $message = $message . "(likely manga)\n\n";
