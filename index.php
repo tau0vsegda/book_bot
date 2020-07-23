@@ -66,8 +66,7 @@ elseif ($message == "/statistic")
         foreach ($all_manga as $manga)
         {
             $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: " . $manga["status"];
-            sendMessage($chat_id, $message);
-            if ($manga["likely"] === 1)
+            if ($manga["likely"] == 1)
             {
                 $message = $message . " (likely manga)\n\n";
             } else {
