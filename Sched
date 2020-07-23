@@ -25,8 +25,8 @@ $stm = databaseConnection()->query("SELECT * FROM users");
 $all_users = $stm->fetchAll();
 foreach ($all_users as $user) {
     $message = "";
-    $user_id = $user["id"];
-    $chat_id = $user["chat_id"];
+    $user_id = $user[0];
+    $chat_id = $user[1];
     sendMessage($chat_id, "i get id");
     $command = "SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'";
     $stm = databaseConnection()->query($command);

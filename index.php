@@ -55,6 +55,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
 {
     $words = explode(" ", $message);
     $manga = "~" . $words[0];
+    sendMessage($chat_id, $manga);
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
