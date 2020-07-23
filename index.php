@@ -51,6 +51,35 @@ elseif ($message == "/help")
 {
     sendMessage($chat_id, "If you want to find a manga, just write its name (please try using English characters);\nIf you do not receive a reply for a long time, do not worry, you will receive it anyway");
 }
+elseif ($message == "/statistic")
+{
+    $stm = databaseConnection()->query("SELECT id FROM users");
+    $all_users = $stm->fetchAll();
+    $message = "";
+    $user_id = $all_users[0][0];
+    $chat_id = $all_users[0][1];
+    $command = "SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'";
+    $stm = databaseConnection()->query($command);
+    $all_manga = $stm->fetchAll();
+    if (!empty($all_manga))
+    {
+        foreach ($all_manga as $manga)
+        {
+            $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: ";
+            if ($manga["likely"] === 1)
+            {
+                $message = $message . "(likely manga)\n\n";
+            } else {
+                $message = $message . "\n\n";
+            }
+        }
+        sendMessage($chat_id, "Statistic:\n\n" . $message);
+    }
+    else
+    {
+        sendMessage($chat_id, "now you are not add anything manga");
+    }
+}
 elseif (preg_match("/^[A-Za-z ]*$/", $message))
 {
     $words = explode(" ", $message);
