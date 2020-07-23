@@ -21,7 +21,7 @@ const DB_PASSWORD = "363d0b63";
 const ACCESS_TOKEN = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
 $api = 'https://api.telegram.org/bot' . ACCESS_TOKEN;
 
-$stm = databaseConnection()->query("SELECT id, chat_id FROM users");
+$stm = databaseConnection()->query("SELECT * FROM users");
 $all_users = $stm->fetchAll();
 foreach ($all_users as $user) {
     $message = "";
