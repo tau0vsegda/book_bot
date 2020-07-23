@@ -59,7 +59,7 @@ elseif ($message == "/statistic")
     $all_users = $stm->fetchAll();
     $message = "";
     $user_id = $all_users[0][0];
-    $chat_id = $all_users[0][1];
+    sendMessage($chat_id, $user_id . " <--");
     $command = "SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'";
     $stm = databaseConnection()->query($command);
     $all_manga = $stm->fetchAll();
