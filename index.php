@@ -197,7 +197,7 @@ elseif (preg_match("/likely/", $inline_message))
 function Scheduler()
 {
 
-    $stm = databaseConnection()->query("SELECT chat_id FROM users");
+    $stm = databaseConnection()->query("SELECT id, chat_id FROM users");
     $all_users = $stm->fetchAll();
     foreach ($all_users as $user)
     {
@@ -222,6 +222,6 @@ function Scheduler()
         }
         sendMessage($chat_id, "Statistic on today:\n\n" . $message);
     }
-*/}
+}
 
 ?>
