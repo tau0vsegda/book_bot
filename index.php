@@ -219,8 +219,8 @@ function Scheduler()
                     $message = $message . "\n\n";
                 }
             }
+            sendMessage($chat_id, "Statistic on today:\n\n" . $message);
         }
-        sendMessage($chat_id, "Statistic on today:\n\n" . $message);
     }
 }
 
