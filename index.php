@@ -196,6 +196,7 @@ elseif (preg_match("/likely/", $inline_message))
 
 function Scheduler()
 {
+
     $stm = databaseConnection()->query("SELECT chat_id FROM users");
     $all_users = $stm->fetchAll();
     foreach ($all_users as $user)
@@ -203,6 +204,7 @@ function Scheduler()
         $message = "";
         $user_id = $user["id"];
         $chat_id = $user["chat_id"];
+        sendMessage($chat_id, "are you boring?");
         $stm = databaseConnection()->query("SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'");
         $all_manga = $stm->fetchAll();
         if (!empty($all_manga))
@@ -220,6 +222,6 @@ function Scheduler()
         }
         sendMessage($chat_id, "Statistic on today:\n\n" . $message);
     }
-}
+*/}
 
 ?>
