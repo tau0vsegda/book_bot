@@ -54,25 +54,22 @@ elseif ($message == "/help")
 }
 elseif ($message == "/statistic")
 {
-    sendMessage($chat_id,"в статистике");
     $stm = databaseConnection()->query("SELECT id FROM users");
     $all_users = $stm->fetchAll();
     $message = "";
     $user_id = $all_users[0][0];
-    sendMessage($chat_id, $user_id . " <--");
     $command = "SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'";
     $stm = databaseConnection()->query($command);
     $all_manga = $stm->fetchAll();
     if (!empty($all_manga))
     {
-        sendMessage($chat_id, "не пустой массив");
         foreach ($all_manga as $manga)
         {
-            $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: ";
+            $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: " . $manga["status"];
             sendMessage($chat_id, $message);
             if ($manga["likely"] === 1)
             {
-                $message = $message . "(likely manga)\n\n";
+                $message = $message . " (likely manga)\n\n";
             } else {
                 $message = $message . "\n\n";
             }
