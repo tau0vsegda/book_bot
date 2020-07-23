@@ -194,34 +194,4 @@ elseif (preg_match("/likely/", $inline_message))
     }
 }
 
-function Scheduler()
-{
-
-    $stm = databaseConnection()->query("SELECT * FROM users");
-    $all_users = $stm->fetchAll();
-    foreach ($all_users as $user)
-    {
-        $message = "";
-        $user_id = $user["id"];
-        $chat_id = $user["chat_id"];
-        sendMessage($chat_id, "are you boring?");
-        $stm = databaseConnection()->query("SELECT manga_id, status, likely FROM manga WHERE user_id = '{$user_id}'");
-        $all_manga = $stm->fetchAll();
-        if (!empty($all_manga))
-        {
-            foreach ($all_manga as $manga)
-            {
-                $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: ";
-                if ($manga["likely"] === 1)
-                {
-                    $message = $message . "(likely manga)\n\n";
-                } else {
-                    $message = $message . "\n\n";
-                }
-            }
-            sendMessage($chat_id, "Statistic:\n\n" . $message);
-        }
-    }
-}
-
 ?>
