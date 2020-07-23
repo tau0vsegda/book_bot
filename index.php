@@ -65,6 +65,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
         CURLOPT_CUSTOMREQUEST => "GET",
     ));
     $response = curl_exec($curl);
+    echo $response;
     $err = curl_error($curl);
     curl_close($curl);
 
