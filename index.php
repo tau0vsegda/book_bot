@@ -26,7 +26,6 @@ const ACCESS_TOKEN = '1031635088:AAFb6oGMm5Ph7SrcO3f4H5wr_mXyOq3sRLo';
 $api = 'https://api.telegram.org/bot' . ACCESS_TOKEN;
 $output = json_decode(file_get_contents('php://input'), true);
 $chat_id = $output['message']['chat']['id'];
-$first_name = $output['message']['chat']['first_name'];
 $message = $output['message']['text'];
 $callback_query = $output['callback_query'];
 $inline_message = $callback_query['data'];
@@ -41,7 +40,7 @@ if ($message == "/start")
 
         $command = "INSERT INTO users set name = '{$first_name}', chat_id = '{$chat_id}'";
         $stm = databaseConnection()->query($command);
-        sendMessage($chat_id, "You are welcome, " . $first_name . "!\nIf you want to know about this bot write /help");
+        sendMessage($chat_id, "You are welcome!\nIf you want to know about this bot write /help");
     }
     else
     {
@@ -65,37 +64,35 @@ elseif ($message == "/statistic")
     {
         foreach ($all_manga as $manga)
         {
-            $message = $message . "Manga id: " . $manga["manga_id"] . "\nStatus: " . $manga["status"];
+            $statistic = $statistic . "Manga id: " . $manga["manga_id"] . "\nStatus: " . $manga["status"];
             if ($manga["likely"] == 1)
             {
-                $message = $message . " (likely manga)\n\n";
+                $statistic = $statistic . " (likely manga)\n\n";
             } else {
-                $message = $message . "\n\n";
+                $statistic = $statistic . "\n\n";
             }
         }
-        sendMessage($chat_id, "Statistic:\n\n" . $message);
+        sendMessage($chat_id, "Statistic:\n\n" . $statistic);
     }
     else
     {
-        sendMessage($chat_id, "now you are not add anything manga");
+        sendMessage($chat_id, "Now you are not add anything manga");
     }
 }
 elseif (preg_match("/^[A-Za-z ]*$/", $message))
 {
     $words = explode(" ", $message);
-    $manga = "~" . $words[0];
-    sendMessage($chat_id, $manga);
+    $manga = $words[0];
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga={$manga}",
+        CURLOPT_URL => "https://cdn.animenewsnetwork.com/encyclopedia/api.xml?manga=~{$manga}",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 30,
         CURLOPT_CUSTOMREQUEST => "GET",
     ));
     $response = curl_exec($curl);
-    echo $response;
     $err = curl_error($curl);
     curl_close($curl);
 
@@ -104,13 +101,9 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
         $array = new SimpleXMLElement($response);
         foreach ($array as $key => $value)
         {
-            if ($key == "warning")
+            $found = false;
+            if ($key != "warning")
             {
-                sendMessage($chat_id, "Not found.");
-            }
-            else
-            {
-
                 $mes = array(
                     "Name" => "",
                     "Summary" => "",
@@ -130,6 +123,7 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
 
                 if ($wordsConsist)
                 {
+                    $found = true;
                     foreach ($value as $key1 => $value1)
                     {
                         if (($key1 == "info") && ($value1["type"] == "Picture") && (is_object($value1)))
@@ -169,6 +163,10 @@ elseif (preg_match("/^[A-Za-z ]*$/", $message))
                     $replyMarkup = json_encode($keyboard);
                     sendMessageWithInline($chat_id, "{$mes["Name"]}\n\n{$mes["Summary"]}\n\n{$mes["Picture"]}", $replyMarkup);
                 }
+            }
+            if (!$found)
+            {
+                sendMessage($chat_id, "Manga not found. Maybe ");
             }
         }
     }
