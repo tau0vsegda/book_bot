@@ -58,7 +58,7 @@ function foundMangaMessage($chatID, $message)
                 {
                     if (WordExist($words, $mangaParameters["name"]))
                     {
-                        $databasesUsers = selectFromTable(id, users, "chat_id = '{$chatID}'");
+                        $databasesUsers = selectFromTable("id", "users", "chat_id = '{$chatID}'");
                         if (!empty($databasesUsers))
                         {
                             $userID = [0]["id"];
