@@ -116,11 +116,11 @@ function fromArrayToString($array)
 
 function inlineKeyboard($manga)
 {
-    $inline_button_want = array("text" => "Want to read", "callback_data" => $manga["id"] . "_want");
-    $inline_button_now = array("text" => "Reading now", "callback_data" => $manga["id"] . "_now");
-    $inline_button_already = array("text" => "Already read", "callback_data" => $manga["id"] . "_already");
-    $inline_button_quit = array("text" => "Quit reading", "callback_data" => $manga["id"] . "_quit");
-    $inline_button_likely = array("text" => "Likely", "callback_data" => $manga["id"] . "_likely");
+    $inline_button_want = array("text" => "Want to read", "callback_data" => $manga . "_want");
+    $inline_button_now = array("text" => "Reading now", "callback_data" => $manga . "_now");
+    $inline_button_already = array("text" => "Already read", "callback_data" => $manga . "_already");
+    $inline_button_quit = array("text" => "Quit reading", "callback_data" => $manga . "_quit");
+    $inline_button_likely = array("text" => "Likely", "callback_data" => $manga . "_likely");
     $inline_keyboard = [[$inline_button_want, $inline_button_now, $inline_button_already, $inline_button_quit, $inline_button_likely]];
     $keyboard = array("inline_keyboard" => $inline_keyboard);
     return json_encode($keyboard);

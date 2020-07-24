@@ -43,6 +43,6 @@ if (isset($inline_message))
             addInLikelyMessage($manga_id, $manga_status, $chat_id_in);
             break;
         default:
-            addOrUpdateStatusMessage($chat_id_in,$manga_id, $manga_status);
+            addOrUpdateStatusMessage($chat_id_in, $manga_id, $manga_status);
     }
 }
