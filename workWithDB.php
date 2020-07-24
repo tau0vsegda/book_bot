@@ -90,7 +90,7 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
                 $databaseName = selectFromTable("manga_name", "temp_manga_data", "manga_id = '{$manga}'");
                 if ($databasesManga !== false)
                 {
-                    $mangaName = $databasesUsers["manga_name"];
+                    $mangaName = $databasesUsers[1]["manga_name"];
                     sendMessage($chatID, "вот название манги {$mangaName}");
                     insertIntoTable("manga", "manga_id = '{$manga}', manga_name = '{$mangaName}', status = '{$mangaStatus}', user_id = '{$userID}'");
                     return "add";
