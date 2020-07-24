@@ -90,13 +90,8 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
                 $databaseName = selectFromTable("manga_name", "temp_manga_data", "manga_id = '{$manga}'");
                 if ($databasesManga !== false)
                 {
-                    foreach ($databasesManga as $value) {
-                        foreach ($value as $key1 => $value1) {
-                            if ($key1 == "manga_name")
-                                $mangaName = $value1;
-                        }
-                    }
-                    //$mangaName = $databasesUsers[0]["manga_name"];
+
+                    $mangaName = $databasesUsers[0]["manga_name"];
                     insertIntoTable("manga", "manga_id = '{$manga}', manga_name = '{$mangaName}', status = '{$mangaStatus}', user_id = '{$userID}'");
                     return "add";
                     }
