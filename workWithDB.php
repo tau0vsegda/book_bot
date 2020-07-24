@@ -87,20 +87,9 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
             if (empty($databasesManga))
             {
                 $databasesName = selectFromTable("manga_name", "temp_manga_data", "manga_id = '{$manga}'");
-                if ($databasesManga !== false)
+                if ($databasesName !== false)
                 {
-                    $mangaName = null;
-                    foreach ($databasesManga as $key => $value)
-                    {
-                        if (is_object($value))
-                        {
-                            foreach ($value as $value1)
-                            {
-                                $mangaName = $value1;
-                            }
-                        }
-                    }
-                    $mangaName = $databasesUsers[0]['manga_name'];
+                    $mangaName = $databasesName[0]['manga_name'];
                     insertIntoTable("manga", "manga_id = '{$manga}', status = '{$mangaStatus}', user_id = '{$userID}', manga_name = '{$mangaName}'");
                     return "add";
                     }
@@ -135,7 +124,7 @@ function addInLikely($chatID, $manga)
             if (!empty($databasesManga))
             {
                 $mangaID = $databasesManga[0]["id"];
-                updateTable("manga", "likely = '1'", "id = '{$mangaID}'");
+                updateTable("manga", "likely = '1'", "id = '{$mangaID}' AND user_id = '{$userID}'");
                 return "likely";
             }
             else
