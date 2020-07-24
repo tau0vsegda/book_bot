@@ -74,7 +74,7 @@ function searchParameters($mangaParameters)
                 $information["Picture"] = $parameter["src"];
             }
         }
-        elseif (($teg == "info") && ($parameter["type"] == "Summary"))
+        elseif (($teg == "info") && ($parameter["type"] == "Plot Summary"))
         {
             $information["Summary"] = $parameter;
         }
