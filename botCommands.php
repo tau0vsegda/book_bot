@@ -103,7 +103,7 @@ function addOrUpdateStatusMessage($chatID, $manga, $mangaStatus)
 }
 
 
-function addInLikelyMessage($manga, $mangaStatus, $chatID)
+function addInLikelyMessage($manga, $chatID)
 {
     $textMessage = null;
     $act = addInLikely($chatID, $manga);

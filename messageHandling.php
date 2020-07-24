@@ -103,10 +103,10 @@ function searchParameters($mangaParameters)
 
 function fromArrayToString($array)
 {
-    $textMessage = null;
+    $textMessage = "";
     foreach ($array as $key => $value)
     {
-        if ($value !== null)
+        if ($value != "")
         {
             $textMessage = $textMessage . "{$key}: {$value}\n";
         }
