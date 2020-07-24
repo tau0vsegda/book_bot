@@ -35,7 +35,7 @@ function statusMessage($chatID)
     }
     else
     {
-        sendMessage($chatID, $textMessage);
+        sendMessage($chatID, "sob". $textMessage);
     }
 }
 
