@@ -43,7 +43,7 @@ function foundMangaMessage($chatID, $message)
 {
     if (preg_match("/^[A-Za-z ]*$/", $message))
     {
- //       deleteFromTable("temp_manga_data", false);
+        deleteFromTable("temp_manga_data", false);
         $words = explode(" ", $message);
         $manga = $words[0];
         $response = getResponse($manga);
