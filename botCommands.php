@@ -106,7 +106,7 @@ function addInLikelyMessage($manga, $mangaStatus, $chatID)
             $textMessage = "I add manga in likely";
             break;
         case "empty":
-            $textMessage = "You don;t add manga anything status, so you can't add manga in likely";
+            $textMessage = "You don't add manga anything status, so you can't add manga in likely";
             break;
         case "error":
             $textMessage = "Sorry, I can't work right now. Write me later";

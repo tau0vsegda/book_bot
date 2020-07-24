@@ -98,7 +98,7 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
                     }
                     else
                     {
-                        "not add";
+                        return "not add";
                     }
                 }
             }
