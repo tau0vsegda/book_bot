@@ -42,9 +42,7 @@ if (isset($inline_message))
         case "likely":
             addInLikelyMessage($manga_id, $manga_status, $chat_id_in);
             break;
-
-        case (preg_match("/want|now|already|quit/", $inline_message)):
-            addOrUpdateStatusMessage($chat_id, $manga_id, $manga_status);
-            break;
+        default:
+            addOrUpdateStatusMessage($chat_id_in,$manga_id, $manga_status);
     }
 }
