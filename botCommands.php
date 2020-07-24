@@ -84,7 +84,7 @@ function foundMangaMessage($chatID, $message)
     }
     else
     {
-        sendMessage($chatID, "Incorrect data. Please, using only the characters of the English alphabet.");
+        sendMessage($chatID, "Incorrect message. Please, using only the characters of the English alphabet.");
     }
 }
 
@@ -93,7 +93,7 @@ function addOrUpdateStatusMessage($chatID, $manga, $mangaStatus)
     $act = addOrUpdateStatus($chatID, $manga, $mangaStatus);
     if ($act !== "error")
     {
-        $textMessage = "I {$act} manga status.";
+        $textMessage = "You {$act} manga status.";
     }
     else
     {
@@ -110,7 +110,7 @@ function addInLikelyMessage($manga, $mangaStatus, $chatID)
     switch ($act)
     {
         case "likely":
-            $textMessage = "I add manga in likely";
+            $textMessage = "You add manga in likely";
             break;
         case "empty":
             $textMessage = "You don't add manga anything status, so you can't add manga in likely";
