@@ -100,7 +100,7 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
                             }
                         }
                     }
-                    $mangaName = $databasesUsers[0]["manga_name"];
+                    $mangaName = $databasesUsers[0]['manga_name'];
                     insertIntoTable("manga", "manga_id = '{$manga}', status = '{$mangaStatus}', user_id = '{$userID}', manga_name = '{$mangaName}'");
                     return "add";
                     }
