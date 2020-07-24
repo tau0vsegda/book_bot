@@ -57,7 +57,7 @@ function searchParameters($mangaParameters)
     $censor = true;
     foreach ($mangaParameters as $teg => $parameter)
     {
-        if (($teg === "info") && ($parameter["type"] === "Picture"))
+        if (($teg == "info") && ($parameter["type"] == "Picture"))
         {
             if (is_object($parameter))
             {
@@ -70,25 +70,24 @@ function searchParameters($mangaParameters)
                 $information["Picture"] = $parameter["src"];
             }
         }
-        elseif (($teg === "info") && ($parameter["type"] === "Main title"))
+        elseif (($teg == "info") && ($parameter["type"] == "Main title"))
         {
             $information["Summary"] = $parameter;
         }
-        elseif ($teg === "staff")
+        elseif ($teg == "staff")
         {
             foreach ($parameter as $key => $value)
             {
-                if ($key === "person")
+                if ($key == "person")
                 {
                     $information["Author"] = $value;
                 }
             }
         }
-        if (($teg === "info") && ($parameter["type"] === "Genres") && ($parameter === "erotica"))
+        if (($teg == "info") && ($parameter["type"] == "Genres") && ($parameter == "erotica"))
         {
             $censor = false;
         }
-
     }
     if (!$censor)
     {
