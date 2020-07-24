@@ -49,10 +49,10 @@ function WordExist($words, $string)
 function searchParameters($mangaParameters)
 {
     $information = array(
-        "Name" => null,
-        "Author" => null,
-        "Summary" => null,
-        "Picture" => null,
+        "Name" => "",
+        "Author" => "",
+        "Summary" => "",
+        "Picture" => "",
     );
     $censor = true;
     foreach ($mangaParameters as $teg => $parameter)
@@ -70,11 +70,11 @@ function searchParameters($mangaParameters)
                 $information["Picture"] = $parameter["src"];
             }
         }
-        if (($teg === "info") && ($parameter["type"] === "Main title"))
+        elseif (($teg === "info") && ($parameter["type"] === "Main title"))
         {
             $information["Summary"] = $parameter;
         }
-        if ($teg === "staff")
+        elseif ($teg === "staff")
         {
             foreach ($parameter as $key => $value)
             {
@@ -88,10 +88,11 @@ function searchParameters($mangaParameters)
         {
             $censor = false;
         }
-        if (!$censor)
-        {
-            $information = null;
-        }
+
+    }
+    if (!$censor)
+    {
+        $information = null;
     }
     return $information;
 }
