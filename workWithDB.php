@@ -86,7 +86,7 @@ function addOrUpdateStatus($chatID, $manga, $mangaStatus)
         {
             if (empty($databasesManga))
             {
-                $databaseName = selectFromTable("manga_name", "temp_manga_data", "manga_id = '{$manga}'");
+                $databasesName = selectFromTable("manga_name", "temp_manga_data", "manga_id = '{$manga}'");
                 if ($databasesManga !== false)
                 {
 
