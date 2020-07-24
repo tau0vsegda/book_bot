@@ -1,7 +1,4 @@
 <?php
-const DB_DSN = "mysql:host=eu-cdbr-west-03.cleardb.net;dbname=heroku_8869f6e7e3f5fac";
-const DB_USER = "b01c10efa93d3a";
-const DB_PASSWORD = "363d0b63";
 
 function databaseConnection(): PDO
 {
@@ -15,7 +12,14 @@ function databaseConnection(): PDO
 
 function selectFromTable($column, $table, $condition)
 {
-    $command = "SELECT {$column} FROM {$table} WHERE {$condition}";
+    if ($condition !== false)
+    {
+        $command = "SELECT {$column} FROM {$table} WHERE {$condition}";
+    }
+    else
+    {
+        $command = "SELECT {$column} FROM {$table}";
+    }
     $stm = databaseConnection()->query($command);
     if ($stm !== false)
     {
