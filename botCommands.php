@@ -58,11 +58,15 @@ function foundMangaMessage($chatID, $message)
                 {
                     if (WordExist($words, $mangaParameters["name"]))
                     {
-                        insertIntoTable("temp_manga_data", "manga_name = '{$mangaParameters["name"]}', manga_id = '{$mangaParameters["id"]}'");
-                        $information = searchParameters($mangaParameters);
-                        if ($information !== null)
+                        $databasesUsers = selectFromTable(id, users, "chat_id = '{$chatID}'");
+                        if (!empty($databasesUsers))
                         {
-                            $found = true;
+                            $userID = [0]["id"];
+                            insertIntoTable("temp_manga_data", "user_id = '{$userID}', manga_name = '{$mangaParameters["name"]}', manga_id = '{$mangaParameters["id"]}'");
+                            $information = searchParameters($mangaParameters);
+                            if ($information !== null) {
+                                $found = true;
+                            }
                         }
                     }
                 }
